@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="POLY_ENERJIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bolumler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bolum" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciKodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdiSoyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bolum" Type="int" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="10" />
+          <Property Name="Yetki" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Makine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MakineNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MakineAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bolum" Type="int" />
+          <Property Name="KWH" Type="decimal" Precision="9" Scale="3" />
+        </EntityType>
+        <EntityType Name="MakineCalismaSureleri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MakineID" Type="int" Nullable="false" />
+          <Property Name="Yil" Type="int" />
+          <Property Name="Ay" Type="int" />
+          <Property Name="CalismaSuresi" Type="int" />
+          <Property Name="KayitEden" Type="nvarchar" MaxLength="50" />
+          <Property Name="KayitTarihi" Type="datetime" />
+          <Property Name="ToplamTuketimKwh" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="BolumID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Makine_Bolumler">
+          <End Role="Bolumler" Type="Self.Bolumler" Multiplicity="0..1" />
+          <End Role="Makine" Type="Self.Makine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Makine">
+              <PropertyRef Name="Bolum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MakineCalismaSureleri_Bolumler">
+          <End Role="Bolumler" Type="Self.Bolumler" Multiplicity="0..1" />
+          <End Role="MakineCalismaSureleri" Type="Self.MakineCalismaSureleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MakineCalismaSureleri">
+              <PropertyRef Name="BolumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MakineCalismaSureleri_Makine">
+          <End Role="Makine" Type="Self.Makine" Multiplicity="1" />
+          <End Role="MakineCalismaSureleri" Type="Self.MakineCalismaSureleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Makine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MakineCalismaSureleri">
+              <PropertyRef Name="MakineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="POLY_ENERJIModelStoreContainer">
+          <EntitySet Name="Bolumler" EntityType="Self.Bolumler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Makine" EntityType="Self.Makine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MakineCalismaSureleri" EntityType="Self.MakineCalismaSureleri" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Makine_Bolumler" Association="Self.FK_Makine_Bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="Makine" EntitySet="Makine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MakineCalismaSureleri_Bolumler" Association="Self.FK_MakineCalismaSureleri_Bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="MakineCalismaSureleri" EntitySet="MakineCalismaSureleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MakineCalismaSureleri_Makine" Association="Self.FK_MakineCalismaSureleri_Makine">
+            <End Role="Makine" EntitySet="Makine" />
+            <End Role="MakineCalismaSureleri" EntitySet="MakineCalismaSureleri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="POLY_ENERJIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bolumler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Makine" Relationship="Self.FK_Makine_Bolumler" FromRole="Bolumler" ToRole="Makine" />
+          <NavigationProperty Name="MakineCalismaSureleri" Relationship="Self.FK_MakineCalismaSureleri_Bolumler" FromRole="Bolumler" ToRole="MakineCalismaSureleri" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdiSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bolum" Type="Int32" />
+          <Property Name="Sifre" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Yetki" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Makine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MakineNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MakineAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bolum" Type="Int32" />
+          <Property Name="KWH" Type="Decimal" Precision="9" Scale="3" />
+          <NavigationProperty Name="Bolumler" Relationship="Self.FK_Makine_Bolumler" FromRole="Makine" ToRole="Bolumler" />
+          <NavigationProperty Name="MakineCalismaSureleri" Relationship="Self.FK_MakineCalismaSureleri_Makine" FromRole="Makine" ToRole="MakineCalismaSureleri" />
+        </EntityType>
+        <EntityType Name="MakineCalismaSureleri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MakineID" Type="Int32" Nullable="false" />
+          <Property Name="Yil" Type="Int32" />
+          <Property Name="Ay" Type="Int32" />
+          <Property Name="CalismaSuresi" Type="Int32" />
+          <Property Name="KayitEden" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KayitTarihi" Type="DateTime" Precision="3" />
+          <Property Name="ToplamTuketimKwh" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="BolumID" Type="Int32" />
+          <NavigationProperty Name="Bolumler" Relationship="Self.FK_MakineCalismaSureleri_Bolumler" FromRole="MakineCalismaSureleri" ToRole="Bolumler" />
+          <NavigationProperty Name="Makine" Relationship="Self.FK_MakineCalismaSureleri_Makine" FromRole="MakineCalismaSureleri" ToRole="Makine" />
+        </EntityType>
+        <Association Name="FK_Makine_Bolumler">
+          <End Role="Bolumler" Type="Self.Bolumler" Multiplicity="0..1" />
+          <End Role="Makine" Type="Self.Makine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Makine">
+              <PropertyRef Name="Bolum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MakineCalismaSureleri_Bolumler">
+          <End Role="Bolumler" Type="Self.Bolumler" Multiplicity="0..1" />
+          <End Role="MakineCalismaSureleri" Type="Self.MakineCalismaSureleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MakineCalismaSureleri">
+              <PropertyRef Name="BolumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MakineCalismaSureleri_Makine">
+          <End Role="Makine" Type="Self.Makine" Multiplicity="1" />
+          <End Role="MakineCalismaSureleri" Type="Self.MakineCalismaSureleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Makine">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MakineCalismaSureleri">
+              <PropertyRef Name="MakineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="POLY_ENERJIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bolumler" EntityType="Self.Bolumler" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="Makine" EntityType="Self.Makine" />
+          <EntitySet Name="MakineCalismaSureleri" EntityType="Self.MakineCalismaSureleri" />
+          <AssociationSet Name="FK_Makine_Bolumler" Association="Self.FK_Makine_Bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="Makine" EntitySet="Makine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MakineCalismaSureleri_Bolumler" Association="Self.FK_MakineCalismaSureleri_Bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="MakineCalismaSureleri" EntitySet="MakineCalismaSureleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MakineCalismaSureleri_Makine" Association="Self.FK_MakineCalismaSureleri_Makine">
+            <End Role="Makine" EntitySet="Makine" />
+            <End Role="MakineCalismaSureleri" EntitySet="MakineCalismaSureleri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="POLY_ENERJIModelStoreContainer" CdmEntityContainer="POLY_ENERJIEntities">
+          <EntitySetMapping Name="Bolumler">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.Bolumler">
+              <MappingFragment StoreEntitySet="Bolumler">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KullaniciKodu" ColumnName="KullaniciKodu" />
+                <ScalarProperty Name="AdiSoyadi" ColumnName="AdiSoyadi" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Makine">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.Makine">
+              <MappingFragment StoreEntitySet="Makine">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MakineNo" ColumnName="MakineNo" />
+                <ScalarProperty Name="MakineAdi" ColumnName="MakineAdi" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="KWH" ColumnName="KWH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MakineCalismaSureleri">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.MakineCalismaSureleri">
+              <MappingFragment StoreEntitySet="MakineCalismaSureleri">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MakineID" ColumnName="MakineID" />
+                <ScalarProperty Name="Yil" ColumnName="Yil" />
+                <ScalarProperty Name="Ay" ColumnName="Ay" />
+                <ScalarProperty Name="CalismaSuresi" ColumnName="CalismaSuresi" />
+                <ScalarProperty Name="KayitEden" ColumnName="KayitEden" />
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="ToplamTuketimKwh" ColumnName="ToplamTuketimKwh" />
+                <ScalarProperty Name="BolumID" ColumnName="BolumID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

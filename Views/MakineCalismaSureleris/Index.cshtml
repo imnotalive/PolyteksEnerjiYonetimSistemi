@@ -1,0 +1,207 @@
+﻿@model IEnumerable<PolyteksEnerjiYonetimSistemi.Models.MakineCalismaSureleri>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .tabLi a.nav-link {
+            background: #999;
+            color: white;
+            font-weight: bold;
+        }
+
+            .tabLi a.nav-link.active {
+                background: #333;
+                color: white;
+            }
+
+        .tabSoruCozum {
+            display: none;
+        }
+    </style>
+
+</head>
+<body onload="myFunction()">
+
+
+
+    <div class="container">
+        @if (User.IsInRole("A"))
+        {
+            <CENTER>
+                <h3 style="color:green; padding:10px;">
+                    <b>YIL : @DateTime.Now.Year</b> - <b> AY: @DateTime.Now.Month</b>
+                </h3>
+            </CENTER>
+        }
+        <br>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs tabLi nav-justified ">
+
+
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tab-1">OCAK</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-2">ŞUBAT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-3">MART</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-4">NİSAN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-5">MAYIS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-6">HAZİRAN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-7">TEMMUZ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-8">AĞUSTOS</a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-9">EYLÜL</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-10">EKİM</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-11">KASIM</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-12">ARALIK</a>
+            </li>
+
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content tabContainer">
+            <div id="tab-1" class="container tab-pane active">
+                <br>
+                <div style="width:800px;">
+                    <div style="width:300px; float:left;">  <div id="result1"></div></div>
+                </div>
+            </div>
+            <div id="tab-2" class="container tab-pane">
+                <br>
+                <div id="result2"></div>
+            </div>
+
+            <div id="tab-3" class="container tab-pane">
+                <br>
+                <div id="result3"></div>
+            </div>
+            <div id="tab-4" class="container tab-pane">
+                <br>
+                <div id="result4"></div>
+            </div>
+            <div id="tab-5" class="container tab-pane">
+                <br>
+                <div id="result5"></div>
+            </div>
+            <div id="tab-6" class="container tab-pane">
+                <br>
+                <div id="result6"></div>
+            </div>
+            <div id="tab-7" class="container tab-pane">
+                <br>
+                <div id="result7"></div>
+            </div>
+            <div id="tab-8" class="container tab-pane">
+                <br>
+                <div id="result8"></div>
+            </div>
+            <div id="tab-9" class="container tab-pane">
+                <br>
+                <div id="result9"></div>
+            </div>
+            <div id="tab-10" class="container tab-pane">
+                <br>
+                <div id="result10"></div>
+            </div>
+            <div id="tab-11" class="container tab-pane">
+                <br>
+                <div id="result11"></div>
+            </div>
+            <div id="tab-12" class="container tab-pane">
+                <br>
+                <div id="result12"></div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    @if (User.IsInRole("T"))
+    {
+        <script>
+
+            $(document).ready(function () {
+
+                $('#result1').load('/MakineCalismaSureleris/_TekstureOcak');
+                $('#result2').load('/MakineCalismaSureleris/_TekstureSubat');
+                $('#result3').load('/MakineCalismaSureleris/_TekstureMart');
+                $('#result4').load('/MakineCalismaSureleris/_TekstureNisan');
+                $('#result5').load('/MakineCalismaSureleris/_TekstureMayıs');
+                $('#result6').load('/MakineCalismaSureleris/_TekstureHaziran');
+                $('#result7').load('/MakineCalismaSureleris/_TekstureTemmuz');
+                $('#result8').load('/MakineCalismaSureleris/_TekstureAgustos');
+                $('#result9').load('/MakineCalismaSureleris/_TekstureEylul');
+                $('#result10').load('/MakineCalismaSureleris/_TekstureEkim');
+                $('#result11').load('/MakineCalismaSureleris/_TekstureKasim');
+                $('#result12').load('/MakineCalismaSureleris/_TekstureAralik');
+
+
+            });
+
+
+        </script>
+    }
+    @if (User.IsInRole("A"))
+    {
+        <script>
+
+            $(document).ready(function () {
+
+                $('#result1').load('/MakineCalismaSureleris/_TekstureOcak');
+                $('#result2').load('/MakineCalismaSureleris/_TekstureSubat');
+                $('#result3').load('/MakineCalismaSureleris/_TekstureMart');
+                $('#result4').load('/MakineCalismaSureleris/_TekstureNisan');
+                $('#result5').load('/MakineCalismaSureleris/_TekstureMayıs');
+                $('#result6').load('/MakineCalismaSureleris/_TekstureHaziran');
+                $('#result7').load('/MakineCalismaSureleris/_TekstureTemmuz');
+                $('#result8').load('/MakineCalismaSureleris/_TekstureAgustos');
+                $('#result9').load('/MakineCalismaSureleris/_TekstureEylul');
+                $('#result10').load('/MakineCalismaSureleris/_TekstureEkim');
+                $('#result11').load('/MakineCalismaSureleris/_TekstureKasim');
+                $('#result12').load('/MakineCalismaSureleris/_TekstureAralik');
+
+
+            });
+
+
+        </script>
+    }
+
+
+
+    <style type="text/css">
+        #asd {
+            margin: 0 auto;
+        }
+    </style>
+</body></html>

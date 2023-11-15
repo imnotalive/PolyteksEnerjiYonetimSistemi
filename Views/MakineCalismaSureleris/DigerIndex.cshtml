@@ -1,0 +1,162 @@
+﻿
+@model IEnumerable<PolyteksEnerjiYonetimSistemi.Models.Makine>
+@{
+    ViewBag.Title = "DigerIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var mer = DateTime.Now.Month;
+    var abc = mer - 1;
+
+}
+
+<div class="container">
+    <h3><b>DİĞER</b></h3>
+    <h4><b>DİĞER</b></h4>
+    <h5><b>YIL :@DateTime.Now.Year</b></h5>
+    <h5><b>AY :@DateTime.Now.Month</b></h5>
+    <h6><b> @abc. ay için giriş yapmaktasınız...</b></h6>
+</div>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+
+<div class="container-fluid">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Ara..." class="form-control" />
+
+        </div>
+    </div>
+</div>
+<hr />
+
+<table class="table table-bordered">
+    <tr style="background-color: #80471C">
+
+        <th>
+            @Html.DisplayNameFor(model => model.MakineAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KWH)
+        </th>
+
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr style="background-color: cornflowerblue" class="Search">
+
+    <td>
+        @Html.DisplayFor(modelItem => item.MakineAdi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.KWH)
+    </td>
+
+    <td>
+        <table class="table table-bordered table-info">
+            <thead>
+                <tr style="background-color: #80471C">
+                    <th>
+                        YIL
+                    </th>
+                    <th>
+                        AY
+                    </th>
+
+                    <th>
+                        ÇALIŞMA SÜRESİ
+                    </th>
+                    <th>
+                        KAYIT EDEN
+                    </th>
+
+
+                    <th>
+                        KAYIT TARİHİ
+                    </th>
+                    <th>
+                        TOPLAM TÜKETİM
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detay in item.MakineCalismaSureleri)
+                {
+
+                    var a = item.KWH * detay.CalismaSuresi;
+                    <tr class="Search">
+                        <td>@(detay.Yil)</td>
+                        <td> @(detay.Ay)</td>
+
+                        <td>@(detay.CalismaSuresi)</td>
+
+                        <td> @(detay.KayitEden)</td>
+
+                        <td> @(detay.KayitTarihi)</td>
+
+                        <td> @(a)</td>
+
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </td>
+    @if (User.IsInRole("YT"))
+    {
+        foreach (var detays in item.MakineCalismaSureleri)
+        {
+
+
+            if (detays.MakineID != 0)
+            {
+
+                <td>
+                    <b>KAPATILMIŞTIR</b>
+                </td>
+
+            }
+
+
+        }
+
+        if (item.MakineCalismaSureleri.Count == 0)
+        {
+            <td>
+                @Html.ActionLink("EKLE", "Edit", new { id1 = item.ID })
+
+            </td>
+        }
+
+
+    }
+
+
+    </tr>
+    }
+
+
+</table>
+<script>
+    //LIVE SEARCH
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            })
+        });
+    });
+</script>

@@ -1,0 +1,83 @@
+﻿@model PolyteksEnerjiYonetimSistemi.Models.MakineCalismaSureleri
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MakineCalismaSureleri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Yil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CalismaSuresi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CalismaSuresi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KayitEden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KayitEden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KayitTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KayitTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToplamTuketimKwh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToplamTuketimKwh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bolumler.Bolum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bolumler.Bolum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Makine.MakineNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Makine.MakineNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

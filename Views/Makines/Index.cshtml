@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PolyteksEnerjiYonetimSistemi.Models.Makine>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MakineNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MakineAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KWH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bolumler.Bolum)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MakineNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MakineAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KWH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bolumler.Bolum)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
