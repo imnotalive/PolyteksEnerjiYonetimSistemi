@@ -5,48 +5,178 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<head>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    </head>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MakineNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MakineAdi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KWH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bolumler.Bolum)
-        </th>
-        <th></th>
-    </tr>
+<h5>
+    @if (User.IsInRole("A"))
+    {
+        <button class="btn btn-success" data-toggle="modal" data-target="#myModal">YENİ MAKİNE EKLE</button>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MakineNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MakineAdi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KWH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bolumler.Bolum)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    }
 
-</table>
+    @using (Html.BeginForm("Makineler", "Makines", FormMethod.Post))
+    {
+        <input type="submit" value="EXCEL İNDİR" class="btn btn-danger btn-sm" />
+    }
+
+
+</h5>
+    <style>
+        h5 {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <div class="container-fluid">
+        <center>   <h2><b>TÜM MAKİNE LİSTESİ</b></h2></center>
+    </div>
+
+    <div class="container-fluid">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" id="Search" placeholder="Ara..." class="form-control" />
+
+            </div>
+        </div>
+    </div>
+    <hr />
+ 
+    <div class="container center">
+        <div class="container-fluid">
+            <table class="table table-bordered table-primary table-responsive-sm">
+                <tr>
+
+                    <th>
+                        @Html.DisplayName("MAKİNE ADI")
+                    </th>
+                    <th>
+                        @Html.DisplayName("KWH")
+                    </th>
+                    <th>
+                        @Html.DisplayName("BÖLÜM")
+                    </th>
+                    @if (User.IsInRole("A"))
+                    {
+                        <th></th>
+                        <th></th>
+                    }
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr class="Search">
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MakineAdi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.KWH)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bolumler.Bolum)
+                        </td>
+                        @if (User.IsInRole("A"))
+                        {
+                            <td>
+                                <center>
+                                    <a href="@Url.Action("Edit", "Makines", new { id = item.ID })" title="DÜZENLE" class="btn btn-primary py-0"> <i class="fa fa-pencil-square" aria-hidden="true">  </i></a>
+                                </center>
+
+                            </td>
+                            <td>
+                                <center>
+                                    <a href="@Url.Action("Delete", "Makines", new { id = item.ID })" title="SİL" class="btn btn-danger py-sm-0"> <i class="fa fa-trash" aria-hidden="true">  </i></a>
+                                </center>
+
+                            </td>
+                        }
+                    </tr>
+                }
+
+            </table>
+        </div>
+        </div>
+
+        <script>
+            //LIVE SEARCH
+            $(document).ready(function () {
+                function Contains(text_one, text_two) {
+                    if (text_one.indexOf(text_two) != -1)
+                        return true;
+                }
+                $("#Search").keyup(function () {
+                    var searchText = $("#Search").val().toLowerCase();
+                    $(".Search").each(function () {
+                        if (!Contains($(this).text().toLowerCase(), searchText)) {
+                            $(this).hide();
+                        }
+                        else {
+                            $(this).show();
+                        }
+                    })
+                });
+            });
+        </script>
+
+        <style>
+            .center {
+                text-align: center;
+                margin: auto;
+                width: 50%;
+                padding: 10px;
+                display: flex;
+            }
+        </style>
+
+
+        @using (Html.BeginForm("Create", "Makines", FormMethod.Post))
+        {
+
+            @Html.AntiForgeryToken()
+            <div class="container">
+                <div class="modal" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                            </div>
+                            <div class="modal-body">
+                                <CENTER><h3><b>YENİ MAKİNE EKLEME</b></h3></CENTER>
+
+
+                                <div id="result1"></div>
+                                <script type="text/javascript">
+
+                                    $(document).ready(function () {
+
+                                        $('#result1').load('/Makines/Create');
+
+                                    });
+
+
+                                </script>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="form-group">
+
+                                    <div style="float:right">
+                                        <button class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                                    </div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+

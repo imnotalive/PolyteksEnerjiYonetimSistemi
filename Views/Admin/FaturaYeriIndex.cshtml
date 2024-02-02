@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PolyteksEnerjiYonetimSistemi.Models.FaturaYeri>
+
+@{
+    ViewBag.Title = "FaturaYeriIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+<div class="container">
+    <center><h2><b>FATURA YERLERİ LİSTESİ</b></h2></center>
+    <center>
+        <input type="button" id="btn1" value="YENİ FATURA YERİ EKLE" class="btn btn-primary btn-sm" onclick="beklemeAnimasyonu()" color:white />
+        <div id="result1"></div>
+    </center>
+</div>
+
+  
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn1').click(function () {
+                $('#result1').load('/Admin/FaturaYeriCreate');
+            });
+        });
+
+    </script>
+
+<div class="container center">
+
+    <table class="table table-bordered table-primary table-striped table-responsive-sm table-hover">
+        <tr>
+            <th>
+                @Html.DisplayName("FATURA YERİ")
+            </th>
+            <th colspan="2">İŞLEMLER</th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FaturaYeri1)
+                </td>
+                <td>
+
+                    <center>
+
+                        <a href="@Url.Action("FaturaYeriEdit", "Admin", new { id = item.ID })" title="DÜZENLE" class="btn btn-primary py-0"> <i class="fa fa-pencil">   </i></a>
+                    </center>
+
+                </td>
+                <td>
+                    <center>
+                        <a href="@Url.Action("FaturaYeriDelete", "Admin",new { id = item.ID })" title="SİL" class="btn btn-danger  py-0"> <i class="fa fa-trash" aria-hidden="true">  </i></a>
+                    </center>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<style>
+    .center {
+        text-align: center;
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        display: flex;
+    }
+</style>
+

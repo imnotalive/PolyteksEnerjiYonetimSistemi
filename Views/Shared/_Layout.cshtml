@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,15 +20,45 @@
 
     <!-- Custom Theme Style -->
     <link href="/Template/gentelella-master/build/css/custom.min.css" rel="stylesheet">
+
+    <style>
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            font-size: 10px;
+            border: none;
+            outline: none;
+            background-color: lightblue;
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+            #myBtn:hover {
+                background-color: #000000;
+            }
+    </style>
 </head>
 
+
+
+<button onclick="topFunction()" id="myBtn" title="Yukarı Çık"><i class="fa fa-arrow-up" aria-hidden="true"></i> &nbsp;Yukarı Çık</button>
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("~/Views/Shared/_KeepAlive.cshtml")
+}
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-hourglass-end"></i> <span>HOŞGELDİNİZ </span></a>
+                        <a href="index.html" class="site_title"><i class="fa fa-bolt"></i> <span>HOŞGELDİNİZ </span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -39,7 +69,7 @@
                                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
                             </div>
                             <div class="profile_info">
-                                <span>Welcome,</span>
+                                <span>Welcome</span>
                                 <h2>John Doe</h2>
                             </div>
                         </div>*@
@@ -63,119 +93,197 @@
                                         <li><a href="/MakineCalismaSureleris/DigerIndex">DİĞER</a></li>
                                     </ul>
                                 </li>
+                                <li>
+                                    <a><i class="fa fa-building-o"></i> Aylık Üretim Verileri<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/Admin/AylikUretimIndex">LİSTE</a></li>
+
+                                    </ul>
+                                </li>
                                 @*<li>
-                                    <a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="form.html">General Form</a></li>
-                                        <li><a href="form_advanced.html">Advanced Components</a></li>
-                                        <li><a href="form_validation.html">Form Validation</a></li>
-                                        <li><a href="form_wizards.html">Form Wizard</a></li>
-                                        <li><a href="form_upload.html">Form Upload</a></li>
-                                        <li><a href="form_buttons.html">Form Buttons</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="general_elements.html">General Elements</a></li>
-                                        <li><a href="media_gallery.html">Media Gallery</a></li>
-                                        <li><a href="typography.html">Typography</a></li>
-                                        <li><a href="icons.html">Icons</a></li>
-                                        <li><a href="glyphicons.html">Glyphicons</a></li>
-                                        <li><a href="widgets.html">Widgets</a></li>
-                                        <li><a href="invoice.html">Invoice</a></li>
-                                        <li><a href="inbox.html">Inbox</a></li>
-                                        <li><a href="calendar.html">Calendar</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="tables.html">Tables</a></li>
-                                        <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="chartjs.html">Chart JS</a></li>
-                                        <li><a href="chartjs2.html">Chart JS2</a></li>
-                                        <li><a href="morisjs.html">Moris JS</a></li>
-                                        <li><a href="echarts.html">ECharts</a></li>
-                                        <li><a href="other_charts.html">Other Charts</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                                        <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                                    </ul>
-                                </li>*@
+                                        <a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="general_elements.html">General Elements</a></li>
+                                            <li><a href="media_gallery.html">Media Gallery</a></li>
+                                            <li><a href="typography.html">Typography</a></li>
+                                            <li><a href="icons.html">Icons</a></li>
+                                            <li><a href="glyphicons.html">Glyphicons</a></li>
+                                            <li><a href="widgets.html">Widgets</a></li>
+                                            <li><a href="invoice.html">Invoice</a></li>
+                                            <li><a href="inbox.html">Inbox</a></li>
+                                            <li><a href="calendar.html">Calendar</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="tables.html">Tables</a></li>
+                                            <li><a href="tables_dynamic.html">Table Dynamic</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="chartjs.html">Chart JS</a></li>
+                                            <li><a href="chartjs2.html">Chart JS2</a></li>
+                                            <li><a href="morisjs.html">Moris JS</a></li>
+                                            <li><a href="echarts.html">ECharts</a></li>
+                                            <li><a href="other_charts.html">Other Charts</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
+                                            <li><a href="fixed_footer.html">Fixed Footer</a></li>
+                                        </ul>
+                                    </li>*@
                             </ul>
                         </div>
                         <div class="menu_section">
                             <h3>RAPORLAR</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-bug"></i>Raporlar<span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-folder"></i>Genel Raporlar<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="e_commerce.html">Makineler</a></li>
-                                        <li><a href="projects.html">Sabit Veriler</a></li>
-                                        <li><a href="project_detail.html">Project Detail</a></li>
-                                        <li><a href="contacts.html">Contacts</a></li>
-                                        <li><a href="profile.html">Profile</a></li>
+                                        <li><a href="/Makines/Index">MAKİNELER</a></li>
+                                        <li><a href="/Admin/HedefIndex">HEDEFLER</a></li>
+                                        @*<li><a href="projects.html">SABİT VERİLER</a></li>*@
+                                        <li><a href="/MakineCalismaSureleris/EnerjiGozdenGecirme">ENERJİ GÖZDEN GEÇİRME</a></li>
+                                        @*<li><a href="projects.html">ANALİZLER</a></li>*@
+
+                                        <li><a href="/Makines/Liste">GENEL LİSTE</a></li>
+                                        <li><a href="/MakineCalismaSureleris/AylikRapor">ÖZET(AYLIK) RAPORLAR</a></li>
+                                        @*<li><a href="contacts.html">GENEL RAPORLAR</a></li>*@
+
                                     </ul>
                                 </li>
                                 @*<li>
-                                    <a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="page_403.html">403 Error</a></li>
-                                        <li><a href="page_404.html">404 Error</a></li>
-                                        <li><a href="page_500.html">500 Error</a></li>
-                                        <li><a href="plain_page.html">Plain Page</a></li>
-                                        <li><a href="login.html">Login Page</a></li>
-                                        <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                                    </ul>
-                                </li>
+                                        <a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="page_403.html">403 Error</a></li>
+                                            <li><a href="page_404.html">404 Error</a></li>
+                                            <li><a href="page_500.html">500 Error</a></li>
+                                            <li><a href="plain_page.html">Plain Page</a></li>
+                                            <li><a href="login.html">Login Page</a></li>
+                                            <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                                        </ul>
+                                    </li>*@
                                 <li>
-                                    <a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-sitemap"></i> Bölüm Bazlı Rapor <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="#level1_1">Level One</a>
+                                        @*<li><a href="#level1_1">Level One</a>*@
                                         <li>
-                                            <a>Level One<span class="fa fa-chevron-down"></span></a>
+                                            <a>Bölümler<span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu">
                                                 <li class="sub_menu">
-                                                    <a href="level2.html">Level Two</a>
+                                                    <a href="/MakineCalismaSureleris/TekstureRapor">Tekstüre</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#level2_1">Level Two</a>
+                                                    <a href="/MakineCalismaSureleris/UretimRapor">Üretim</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#level2_2">Level Two</a>
+                                                    <a href="/MakineCalismaSureleris/TeknikTekstilRapor">Teknik Tekstil</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/MakineCalismaSureleris/BukumRapor">Fantazi - Büküm</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/MakineCalismaSureleris/YardimciTesislerRapor">Yardımcı Tesisler</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/MakineCalismaSureleris/DigerRapor">Diğer</a>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a href="#level1_2">Level One</a>
-                                        </li>
+                                        @*<li>
+                                                <a href="#level1_2">Level One</a>
+                                            </li>*@
                                     </ul>
-                                </li>*@
+                                </li>
 
                             </ul>
                         </div>
+                        @if (User.IsInRole("A"))
+                        {
+                            <div class="menu_section">
+                                <h3>Admin</h3>
+                                <ul class="nav side-menu">
+                                    <li>
+                                        <a><i class="fa fa-arrows"></i>Enerji Takip Yönetimi<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="/Makines/Index">MAKİNELER</a></li>
+                                            <li><a href="projects.html">SABİT VERİLER</a></li>
+                                            <li><a href="projects.html">LİSTE</a></li>
+                                            <li><a href="/Admin/HedefIndex">HEDEFLER</a></li>
+                                            <li><a href="/Admin/FaturaYeriIndex">FATURA YERLERİ</a></li>
+                                            <li><a href="/Admin/FaturaIndex">FATURALAR</a></li>
 
+                                        </ul>
+                                    </li>
+                                    @*<li>
+                                            <a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="form.html">General Form</a></li>
+                                                <li><a href="form_advanced.html">Advanced Components</a></li>
+                                                <li><a href="form_validation.html">Form Validation</a></li>
+                                                <li><a href="form_wizards.html">Form Wizard</a></li>
+                                                <li><a href="form_upload.html">Form Upload</a></li>
+                                                <li><a href="form_buttons.html">Form Buttons</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="general_elements.html">General Elements</a></li>
+                                                <li><a href="media_gallery.html">Media Gallery</a></li>
+                                                <li><a href="typography.html">Typography</a></li>
+                                                <li><a href="icons.html">Icons</a></li>
+                                                <li><a href="glyphicons.html">Glyphicons</a></li>
+                                                <li><a href="widgets.html">Widgets</a></li>
+                                                <li><a href="invoice.html">Invoice</a></li>
+                                                <li><a href="inbox.html">Inbox</a></li>
+                                                <li><a href="calendar.html">Calendar</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="tables.html">Tables</a></li>
+                                                <li><a href="tables_dynamic.html">Table Dynamic</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="chartjs.html">Chart JS</a></li>
+                                                <li><a href="chartjs2.html">Chart JS2</a></li>
+                                                <li><a href="morisjs.html">Moris JS</a></li>
+                                                <li><a href="echarts.html">ECharts</a></li>
+                                                <li><a href="other_charts.html">Other Charts</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
+                                                <li><a href="fixed_footer.html">Fixed Footer</a></li>
+                                            </ul>
+                                        </li>*@
+                                </ul>
+                            </div>
+                        }
                     </div>
                     <!-- /sidebar menu -->
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <a data-toggle="tooltip" data-placement="top" title="Ayarlar">
                             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <a data-toggle="tooltip" data-placement="top" title="Tam Ekran">
                             <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <a data-toggle="tooltip" data-placement="top" title="Kilitle">
                             <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                         </a>
                         <a data-toggle="tooltip" data-placement="top" title="Çıkış Yap" href="/Home/Cikis">
@@ -196,12 +304,12 @@
                         <ul class=" navbar-right">
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                   @User.Identity.Name
+                                    @User.Identity.Name
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="javascript:;"> Profil</a>
                                     <a class="dropdown-item" href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
+                                        @*<span class="badge bg-red pull-right">50%</span>*@
                                         <span>Ayarlar</span>
                                     </a>
                                     <a href="mailto:mdikici@tasdelengroup.com" target="_blank" class="dropdown-item">
@@ -213,7 +321,7 @@
                                 </div>
                             </li>
 
-                   
+
                         </ul>
                     </nav>
                 </div>
@@ -222,10 +330,10 @@
             <!-- page content -->
             <div class="right_col" role="main">
                 <div class="">
-                    <div class="page-title">
-                        <div class="title_left">
-                            <h3>Anasayfa</h3>
-                        </div>
+                    <!--<div class="page-title">
+                    <div class="title_left">-->
+                    @*<h3>Anasayfa</h3>*@
+                    <!--</div>
 
                         <div class="title_right">
                             <div class="col-md-5 col-sm-5   form-group pull-right top_search">
@@ -237,13 +345,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="clearfix"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="">
                                 <div class="x_content">
                                     <div class="row">
 
@@ -267,7 +375,7 @@
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
-                    <span class="text-muted fw-bold me-1">© @DateTime.Now.Year, </span> made with <i class="fa fa-heart heart"></i>
+                    <span class="text-muted fw-bold me-1"> ©2023 - @DateTime.Now.Year, </span> made with <i class="fa fa-heart heart"></i>
                     <a href="https://tasdelengroup.com/tr/default" target="_blank" class="text-gray-800 text-hover-primary">POLYTEKS</a>
                 </div>
                 <div class="clearfix"></div>
@@ -275,7 +383,13 @@
             <!-- /footer content -->
         </div>
     </div>
-
+    <style>
+        ul li {
+            display: block;
+            padding: 0.4rem;
+            text-align: left
+        }
+    </style>
     <!-- jQuery -->
 
     <script src="/Template/gentelella-master/vendors/jquery/dist/jquery.min.js"></script>
@@ -296,6 +410,27 @@
 
     <!-- Custom Theme Scripts -->
     <script src="/Template/gentelella-master/build/js/custom.min.js"></script>
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
 
 </body>
 </html>

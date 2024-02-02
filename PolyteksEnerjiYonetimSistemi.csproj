@@ -48,11 +48,23 @@
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="ClosedXML, Version=0.104.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ClosedXML.0.104.0-preview2\lib\netstandard2.0\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML.Parser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1d5f7376574c51ec, processorArchitecture=MSIL">
+      <HintPath>packages\ClosedXML.Parser.1.0.0-beta4\lib\netstandard2.0\ClosedXML.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -61,11 +73,158 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RBush, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\RBush.3.2.0\lib\netstandard1.2\RBush.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Rotativa.1.7.4-rc\lib\net45\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="SixLabors.Fonts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
+      <HintPath>packages\SixLabors.Fonts.1.0.0\lib\netstandard2.0\SixLabors.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Packaging.6.0.0\lib\net461\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -103,9 +262,15 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -128,20 +293,25 @@
     <Content Include="Global.asax" />
     <Content Include="Models\ISO50001.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ISO50001.Context.cs</LastGenOutput>
       <DependentUpon>ISO50001.edmx</DependentUpon>
+      <LastGenOutput>ISO50001.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ISO50001.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ISO50001.edmx</DependentUpon>
       <LastGenOutput>ISO50001.cs</LastGenOutput>
     </Content>
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Browsers\qt.browser" />
     <EntityDeploy Include="Models\ISO50001.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ISO50001.Designer.cs</LastGenOutput>
@@ -782,821 +952,6 @@
     <Content Include="Template\gentelella-master\vendors\datatables.net\js\jquery.dataTables.js" />
     <Content Include="Template\gentelella-master\vendors\datatables.net\js\jquery.dataTables.min.js" />
     <Content Include="Template\gentelella-master\vendors\datatables.net\License.txt" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-af-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-AE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-BH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-DZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-EG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-IQ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-JO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-KW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-LB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-LY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-MA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-OM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-QA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-SA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-SY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-TN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ar-YE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-az-Cyrl-AZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-az-Latn-AZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-be-BY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-bg-BG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-bs-Latn-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ca-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-cs-CZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-cy-GB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-da-DK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-de-AT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-de-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-de-DE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-de-LI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-de-LU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-dv-MV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-el-GR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-029.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-AU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-BZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-CA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-GB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-IE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-JM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-NZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-PH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-TT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-US.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-en-ZW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-AR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-BO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-CL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-CO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-CR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-DO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-EC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-GT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-HN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-MX.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-NI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-PA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-PE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-PR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-PY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-SV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-UY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-es-VE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-et-EE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-eu-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-fa-IR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-fi-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-fo-FO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-fr-BE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-fr-CA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-fr-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-fr-FR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-fr-LU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-fr-MC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-gl-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-gu-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-he-IL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-hi-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-hr-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-hr-HR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-hu-HU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-hy-AM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-id-ID.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-is-IS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-it-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-it-IT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ja-JP.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ka-GE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-kk-KZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-kn-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ko-KR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-kok-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ky-KG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-lt-LT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-lv-LV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-mi-NZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-mk-MK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-mn-MN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-mr-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ms-BN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ms-MY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-mt-MT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-nb-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-nl-BE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-nl-NL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-nn-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ns-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-pa-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-pl-PL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-pt-BR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-pt-PT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-quz-BO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-quz-EC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-quz-PE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ro-RO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ru-RU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sa-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-se-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-se-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-se-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sk-SK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sl-SI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sma-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sma-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-smj-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-smj-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-smn-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sms-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sq-AL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sr-Cyrl-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sr-Cyrl-CS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sr-Latn-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sr-Latn-CS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sv-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sv-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-sw-KE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-syr-SY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ta-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-te-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-th-TH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-tn-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-tr-TR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-tt-RU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-uk-UA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-ur-PK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-uz-Cyrl-UZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-uz-Latn-UZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-vi-VN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-xh-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-zh-CN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-zh-HK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-zh-MO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-zh-SG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-zh-TW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date-zu-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\date.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\af-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-AE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-BH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-DZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-EG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-IQ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-JO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-KW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-LB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-LY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-MA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-OM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-QA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-SA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-SY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-TN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ar-YE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\az-Cyrl-AZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\az-Latn-AZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\be-BY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\bg-BG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\bs-Latn-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ca-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\cs-CZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\cy-GB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\da-DK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\de-AT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\de-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\de-DE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\de-LI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\de-LU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\dv-MV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\el-GR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-029.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-AU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-BZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-CA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-GB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-IE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-JM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-NZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-PH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-TT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\en-ZW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-AR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-BO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-CL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-CO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-CR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-DO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-EC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-GT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-HN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-MX.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-NI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-PA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-PE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-PR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-PY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-SV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-UY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\es-VE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\et-EE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\eu-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\fa-IR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\fi-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\fo-FO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\fr-BE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\fr-CA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\fr-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\fr-FR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\fr-LU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\fr-MC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\gl-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\gu-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\he-IL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\hi-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\hr-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\hr-HR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\hu-HU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\hy-AM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\id-ID.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\is-IS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\it-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\it-IT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ja-JP.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ka-GE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\kk-KZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\kn-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ko-KR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\kok-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ky-KG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\lt-LT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\lv-LV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\mi-NZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\mk-MK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\mn-MN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\mr-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ms-BN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ms-MY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\mt-MT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\nb-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\nl-BE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\nl-NL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\nn-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ns-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\pa-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\pl-PL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\pt-BR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\pt-PT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\quz-BO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\quz-EC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\quz-PE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ro-RO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ru-RU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sa-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\se-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\se-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\se-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sk-SK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sl-SI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sma-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sma-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\smj-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\smj-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\smn-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sms-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sq-AL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sr-Cyrl-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sr-Cyrl-CS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sr-Latn-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sr-Latn-CS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sv-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sv-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\sw-KE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\syr-SY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ta-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\te-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\th-TH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\tn-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\tr-TR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\tt-RU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\uk-UA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\ur-PK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\uz-Cyrl-UZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\uz-Latn-UZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\vi-VN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\xh-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\zh-CN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\zh-HK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\zh-MO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\zh-SG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\zh-TW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\i18n\zu-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-af-ZA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-AE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-BH.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-DZ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-EG.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-IQ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-JO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-KW.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-LB.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-LY.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-MA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-OM.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-QA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-SA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-SY.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-TN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ar-YE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-az-Cyrl-AZ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-az-Latn-AZ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-be-BY.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-bg-BG.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-bs-Latn-BA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ca-ES.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-cs-CZ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-cy-GB.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-da-DK.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-de-AT.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-de-CH.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-de-DE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-de-LI.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-de-LU.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-dv-MV.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-el-GR.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-029.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-AU.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-BZ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-CA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-GB.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-IE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-JM.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-NZ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-PH.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-TT.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-US.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-ZA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-en-ZW.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-AR.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-BO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-CL.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-CO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-CR.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-DO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-EC.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-ES.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-GT.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-HN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-MX.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-NI.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-PA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-PE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-PR.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-PY.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-SV.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-UY.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-es-VE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-et-EE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-eu-ES.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-fa-IR.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-fi-FI.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-fo-FO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-fr-BE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-fr-CA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-fr-CH.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-fr-FR.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-fr-LU.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-fr-MC.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-gl-ES.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-gu-IN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-he-IL.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-hi-IN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-hr-BA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-hr-HR.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-hu-HU.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-hy-AM.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-id-ID.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-is-IS.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-it-CH.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-it-IT.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ja-JP.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ka-GE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-kk-KZ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-kn-IN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ko-KR.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-kok-IN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ky-KG.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-lt-LT.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-lv-LV.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-mi-NZ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-mk-MK.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-mn-MN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-mr-IN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ms-BN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ms-MY.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-mt-MT.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-nb-NO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-nl-BE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-nl-NL.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-nn-NO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ns-ZA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-pa-IN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-pl-PL.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-pt-BR.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-pt-PT.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-quz-BO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-quz-EC.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-quz-PE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ro-RO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ru-RU.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sa-IN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-se-FI.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-se-NO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-se-SE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sk-SK.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sl-SI.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sma-NO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sma-SE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-smj-NO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-smj-SE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-smn-FI.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sms-FI.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sq-AL.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sr-Cyrl-BA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sr-Cyrl-CS.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sr-Latn-BA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sr-Latn-CS.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sv-FI.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sv-SE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-sw-KE.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-syr-SY.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ta-IN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-te-IN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-th-TH.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-tn-ZA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-tr-TR.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-tt-RU.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-uk-UA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-ur-PK.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-uz-Cyrl-UZ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-uz-Latn-UZ.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-vi-VN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-xh-ZA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-zh-CN.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-zh-HK.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-zh-MO.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-zh-SG.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-zh-TW.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date-zu-ZA.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\date.min.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\af-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-AE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-BH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-DZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-EG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-IQ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-JO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-KW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-LB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-LY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-MA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-OM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-QA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-SA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-SY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-TN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ar-YE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\az-Cyrl-AZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\az-Latn-AZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\be-BY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\bg-BG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\bs-Latn-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ca-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\cs-CZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\cy-GB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\da-DK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\de-AT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\de-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\de-DE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\de-LI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\de-LU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\dv-MV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\el-GR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-029.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-AU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-BZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-CA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-GB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-IE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-JM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-NZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-PH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-TT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\en-ZW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-AR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-BO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-CL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-CO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-CR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-DO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-EC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-GT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-HN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-MX.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-NI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-PA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-PE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-PR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-PY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-SV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-UY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\es-VE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\et-EE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\eu-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\fa-IR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\fi-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\fo-FO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\fr-BE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\fr-CA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\fr-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\fr-FR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\fr-LU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\fr-MC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\gl-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\gu-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\he-IL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\hi-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\hr-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\hr-HR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\hu-HU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\hy-AM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\id-ID.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\is-IS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\it-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\it-IT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ja-JP.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ka-GE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\kk-KZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\kn-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ko-KR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\kok-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ky-KG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\lt-LT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\lv-LV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\mi-NZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\mk-MK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\mn-MN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\mr-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ms-BN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ms-MY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\mt-MT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\nb-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\nl-BE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\nl-NL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\nn-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ns-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\pa-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\pl-PL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\pt-BR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\pt-PT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\quz-BO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\quz-EC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\quz-PE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ro-RO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ru-RU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sa-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\se-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\se-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\se-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sk-SK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sl-SI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sma-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sma-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\smj-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\smj-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\smn-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sms-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sq-AL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sr-Cyrl-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sr-Cyrl-CS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sr-Latn-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sr-Latn-CS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sv-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sv-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\sw-KE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\syr-SY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ta-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\te-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\th-TH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\tn-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\tr-TR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\tt-RU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\uk-UA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\ur-PK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\uz-Cyrl-UZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\uz-Latn-UZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\vi-VN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\xh-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\zh-CN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\zh-HK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\zh-MO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\zh-SG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\zh-TW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\build\production\i18n\zu-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\GruntFile.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\index.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\core-prototypes.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\core.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\extras.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\format_parser.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\i18n.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\index.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\parser.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\parsing_grammar.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\parsing_operators.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\parsing_translator.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\sugarpak.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\time_period.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\core\time_span.js.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\index.html" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\prettify.css" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov-report\prettify.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\core-prototypes.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\core.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\extras.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\format_parser.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\i18n.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\parser.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\parsing_grammar.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\parsing_operators.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\parsing_translator.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\sugarpak.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\time_period.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\core\time_span.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n-template.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\af-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-AE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-BH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-DZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-EG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-IQ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-JO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-KW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-LB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-LY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-MA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-OM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-QA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-SA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-SY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-TN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ar-YE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\az-Cyrl-AZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\az-Latn-AZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\be-BY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\bg-BG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\bs-Latn-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ca-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\cs-CZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\cy-GB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\da-DK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\de-AT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\de-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\de-DE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\de-LI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\de-LU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\dv-MV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\el-GR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-029.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-AU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-BZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-CA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-GB.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-IE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-JM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-NZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-PH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-TT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\en-ZW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-AR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-BO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-CL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-CO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-CR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-DO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-EC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-GT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-HN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-MX.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-NI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-PA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-PE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-PR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-PY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-SV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-UY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\es-VE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\et-EE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\eu-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\fa-IR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\fi-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\fo-FO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\fr-BE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\fr-CA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\fr-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\fr-FR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\fr-LU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\fr-MC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\gl-ES.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\gu-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\he-IL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\hi-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\hr-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\hr-HR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\hu-HU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\hy-AM.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\id-ID.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\is-IS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\it-CH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\it-IT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ja-JP.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ka-GE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\kk-KZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\kn-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ko-KR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\kok-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ky-KG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\lt-LT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\lv-LV.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\mi-NZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\mk-MK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\mn-MN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\mr-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ms-BN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ms-MY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\mt-MT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\nb-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\nl-BE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\nl-NL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\nn-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ns-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\pa-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\pl-PL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\pt-BR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\pt-PT.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\quz-BO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\quz-EC.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\quz-PE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ro-RO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ru-RU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sa-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\se-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\se-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\se-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sk-SK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sl-SI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sma-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sma-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\smj-NO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\smj-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\smn-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sms-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sq-AL.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sr-Cyrl-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sr-Cyrl-CS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sr-Latn-BA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sr-Latn-CS.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sv-FI.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sv-SE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\sw-KE.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\syr-SY.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ta-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\te-IN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\th-TH.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\tn-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\tr-TR.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\tt-RU.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\uk-UA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\ur-PK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\uz-Cyrl-UZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\uz-Latn-UZ.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\vi-VN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\xh-ZA.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\zh-CN.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\zh-HK.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\zh-MO.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\zh-SG.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\zh-TW.js" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\src\i18n\zu-ZA.js" />
     <Content Include="Template\gentelella-master\vendors\devbridge-autocomplete\dist\jquery.autocomplete.js" />
     <Content Include="Template\gentelella-master\vendors\devbridge-autocomplete\dist\jquery.autocomplete.min.js" />
     <Content Include="Template\gentelella-master\vendors\devbridge-autocomplete\dist\license.txt" />
@@ -3035,7 +2390,6 @@
     <Content Include="Template\gentelella-master\vendors\moment\min\moment-with-locales.js" />
     <Content Include="Template\gentelella-master\vendors\moment\min\moment-with-locales.min.js" />
     <Content Include="Template\gentelella-master\vendors\moment\min\moment.min.js" />
-    <Content Include="Template\gentelella-master\vendors\moment\min\tests.js" />
     <Content Include="Template\gentelella-master\vendors\moment\moment.js" />
     <Content Include="Template\gentelella-master\vendors\moment\src\lib\create\check-overflow.js" />
     <Content Include="Template\gentelella-master\vendors\moment\src\lib\create\date-from-array.js" />
@@ -4364,13 +3718,6 @@
     <Content Include="Template\gentelella-master\vendors\datatables.net\.bower.json" />
     <Content Include="Template\gentelella-master\vendors\datatables.net\bower.json" />
     <Content Include="Template\gentelella-master\vendors\datatables.net\Readme.md" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\.bower.json" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\bower.json" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\LICENSE" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\package.json" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\README.md" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\coverage.json" />
-    <Content Include="Template\gentelella-master\vendors\DateJS\reports\lcov.info" />
     <Content Include="Template\gentelella-master\vendors\devbridge-autocomplete\.bower.json" />
     <Content Include="Template\gentelella-master\vendors\devbridge-autocomplete\bower.json" />
     <Content Include="Template\gentelella-master\vendors\devbridge-autocomplete\devbridge-autocomplete.jquery.json" />
@@ -5021,13 +4368,27 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MakineCalismaSurelerisController.cs" />
     <Compile Include="Controllers\MakinesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AylikUretimVerileri.cs">
+      <DependentUpon>ISO50001.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Bolumler.cs">
+      <DependentUpon>ISO50001.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FaturaBilgileri.cs">
+      <DependentUpon>ISO50001.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FaturaYeri.cs">
+      <DependentUpon>ISO50001.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FilterClass.cs" />
+    <Compile Include="Models\Hedefler.cs">
       <DependentUpon>ISO50001.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ISO50001.Context.cs">
@@ -5052,6 +4413,15 @@
       <DependentUpon>ISO50001.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MakineCalismaSureleri.cs">
+      <DependentUpon>ISO50001.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_Bolum_Aylik_Calisma_Sureleris.cs">
+      <DependentUpon>ISO50001.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_Bolum_Aylik_Calisma_Sureleri_Detay.cs">
+      <DependentUpon>ISO50001.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_Bolum_Aylik_Calisma_Suresi_Basinc.cs">
       <DependentUpon>ISO50001.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -5087,23 +4457,46 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureOcak.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureSubat.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureMart.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureNisan.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureMayıs.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureHaziran.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureTemmuz.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureAgustos.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureEylul.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureEkim.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureKasim.cshtml" />
-    <Content Include="Views\MakineCalismaSureleris\_TekstureAralik.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\MakineCalismaSureleris\TeknikTekstilIndex.cshtml" />
     <Content Include="Views\MakineCalismaSureleris\UretimIndex.cshtml" />
     <Content Include="Views\MakineCalismaSureleris\YardimciTesislerIndex.cshtml" />
     <Content Include="Views\MakineCalismaSureleris\DigerIndex.cshtml" />
+    <Content Include="Views\MakineCalismaSureleris\DetayDuzenle.cshtml" />
+    <Content Include="Views\Shared\_KeepAlive.cshtml" />
+    <Content Include="Views\Makines\Liste.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\MakineCalismaSureleris\TekstureRapor.cshtml" />
+    <Content Include="Views\MakineCalismaSureleris\BukumRapor.cshtml" />
+    <Content Include="Views\MakineCalismaSureleris\TeknikTekstilRapor.cshtml" />
+    <Content Include="Views\MakineCalismaSureleris\UretimRapor.cshtml" />
+    <Content Include="Views\MakineCalismaSureleris\YardimciTesislerRapor.cshtml" />
+    <Content Include="Views\MakineCalismaSureleris\DigerRapor.cshtml" />
+    <Content Include="Views\MakineCalismaSureleris\AylikRapor.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\FaturaCreate.cshtml" />
+    <Content Include="Views\Admin\FaturaEdit.cshtml" />
+    <Content Include="Views\Admin\FaturaDelete.cshtml" />
+    <Content Include="Views\Admin\FaturaIndex.cshtml" />
+    <Content Include="Views\Makines\Edit.cshtml" />
+    <Content Include="Views\Makines\Delete.cshtml" />
+    <Content Include="Views\Admin\FaturaYeriIndex.cshtml" />
+    <Content Include="Views\Admin\FaturaYeriCreate.cshtml" />
+    <Content Include="Views\Admin\FaturaYeriEdit.cshtml" />
+    <Content Include="Views\Admin\FaturaYeriDelete.cshtml" />
+    <Content Include="Views\MakineCalismaSureleris\YardimciTesislerBarRapor.cshtml" />
+    <Content Include="Views\Admin\HedefIndex.cshtml" />
+    <Content Include="Views\Admin\HedefCreate.cshtml" />
+    <Content Include="Views\Admin\HedefEdit.cshtml" />
+    <Content Include="Views\Admin\HedefDelete.cshtml" />
+    <Content Include="Views\Admin\AylikUretimIndex.cshtml" />
+    <Content Include="Views\Admin\AylikUretimCreate.cshtml" />
+    <Content Include="Views\Admin\AylikUretimEdit.cshtml" />
+    <Content Include="Views\Admin\AylikUretimDelete.cshtml" />
+    <Content Include="Views\MakineCalismaSureleris\EnerjiGozdenGecirme.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5113,6 +4506,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Template\gentelella-master\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />

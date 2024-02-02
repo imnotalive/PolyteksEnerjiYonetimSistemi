@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout =null;
     var data = ViewBag.data as PolyteksEnerjiYonetimSistemi.Models.Makine;
 }
 
@@ -12,27 +12,26 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>MakineCalismaSureleri</h4>
-    <hr />
+
     <table class="table table-hover table-bordered table-dark">
         <thead class="thead-dark">
             <tr>
                 <th>
-                    <b>makine adı</b>
+                    <b>Makine adı</b>
                 </th>
                 <th>
-                    <b>kwh</b>
+                    <b>Kwh</b>
                 </th>
-            
-              
+
+
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>@data.MakineAdi</td>
                 <td>@data.KWH</td>
-           
-             
+
+
 
 
             </tr>
@@ -41,35 +40,28 @@
     </table>
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.ID)
-
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.MakineID, "Makine", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("MakineID", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.MakineID, "", new { @class = "text-danger" })
+    @if (data.Bolumler.ID == 5 || data.Bolumler.ID == 12 || data.Bolumler.ID == 13)
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.BasincKWh, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.BasincKWh, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.BasincKWh, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>*@
-
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.Yil, htmlAttributes: new { @class = "control-label col-md-12" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Yil, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Yil, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.M3, "m³", htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.M3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.M3, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Ay, htmlAttributes: new { @class = "control-label col-md-12" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Ay, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Ay, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
+    }
 
     <div class="form-group">
         @Html.LabelFor(model => model.CalismaSuresi, htmlAttributes: new { @class = "control-label col-md-12" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.CalismaSuresi, new { htmlAttributes = new { @class = "form-control", min = 0, max = 744} })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.CalismaSuresi, new { htmlAttributes = new { @class = "form-control", @Value = "0", min = 0, max = 744 } })
             @Html.ValidationMessageFor(model => model.CalismaSuresi, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -77,16 +69,13 @@
 
 
 
-
+    <br />
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-12">
-            <input type="submit" value="KAYDET" class="btn btn-success" />
+            <input type="submit" value="KAYDET" class="btn btn-success btn-block" />
         </div>
     </div>
 </div>
 }
 
-<div>
-    @Html.ActionLink("GERİ", "Index")
-</div>

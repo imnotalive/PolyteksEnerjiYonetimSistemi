@@ -39,7 +39,7 @@ namespace PolyteksEnerjiYonetimSistemi.Roles
 
         public override string[] GetRolesForUser(string username)
         {
-            POLY_ENERJIEntities c = new POLY_ENERJIEntities();
+            POLY_ENERJI c = new POLY_ENERJI();
             var x = c.Kullanicilar.FirstOrDefault(y => y.AdiSoyadi == username);
             return new string[] { x.Yetki };
         }

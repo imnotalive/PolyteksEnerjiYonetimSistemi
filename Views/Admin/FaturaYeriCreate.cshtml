@@ -1,0 +1,48 @@
+﻿@model PolyteksEnerjiYonetimSistemi.Models.FaturaYeri
+
+@{
+    ViewBag.Title = "FaturaYeriCreate";
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FaturaYeri1, "FATURA YERİ", htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.FaturaYeri1, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FaturaYeri1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                   <br />
+                            <input type="submit" value="EKLE" class="btn btn-success" />
+                       
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+}
+<style>
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+    }
+</style>

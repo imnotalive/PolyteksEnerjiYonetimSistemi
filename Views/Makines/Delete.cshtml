@@ -1,0 +1,67 @@
+﻿@model PolyteksEnerjiYonetimSistemi.Models.Makine
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</h3>
+<div class="container">
+    <h4>Makine</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MakineNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MakineNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MakineAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MakineAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KWH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KWH)
+        </dd>
+
+   
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YrdTesisMakTipi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YrdTesisMakTipi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bolumler.Bolum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bolumler.Bolum)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-danger" /> |
+            @Html.ActionLink("GERİ GİT", "Index","Makines",new {@class="btn btn-info" })
+        </div>
+    }
+</div>

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<PolyteksEnerjiYonetimSistemi.Models.Hedefler>
+
+@{
+    ViewBag.Title = "HedefIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+
+
+<div class="container">
+    <center><h2><b>HEDEFLER LİSTESİ</b></h2></center>
+    @if (User.IsInRole("A"))
+    {
+        <center>
+            <input type="button" id="btn1" value="YENİ HEDEF EKLE" class="btn btn-primary btn-sm" onclick="beklemeAnimasyonu()" color:white />
+            <div id="result1"></div>
+        </center>
+    }
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btn1').click(function () {
+            $('#result1').load('/Admin/HedefCreate');
+        });
+    });
+
+</script>
+
+<div class="container center">
+
+    <table class="table table-bordered table-primary table-striped table-responsive-sm table-hover">
+        <tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Yil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HedefDeger)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bolumler.Bolum)
+            </th>
+            @if (User.IsInRole("A"))
+            {
+                <th></th>
+                <th></th>
+            }
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Yil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HedefDeger)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bolumler.Bolum)
+                </td>
+                @if (User.IsInRole("A"))
+                {
+                    <td>
+
+                        <center>
+
+                            <a href="@Url.Action("HedefEdit", "Admin", new { id = item.ID })" title="DÜZENLE" class="btn btn-primary py-0"> <i class="fa fa-pencil">   </i></a>
+                        </center>
+
+                    </td>
+                    <td>
+                        <center>
+                            <a href="@Url.Action("HedefDelete", "Admin", new { id = item.ID })" title="SİL" class="btn btn-danger py-0"> <i class="fa fa-trash" aria-hidden="true">  </i></a>
+                        </center>
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+</div>
+<style>
+    .center {
+        text-align: center;
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        display: flex;
+    }
+</style>
+

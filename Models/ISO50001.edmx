@@ -4,13 +4,52 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="POLY_ENERJIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="POLY_ENERJIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AylikUretimVerileri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BolumID" Type="int" />
+          <Property Name="Yil" Type="int" />
+          <Property Name="Ay" Type="int" />
+          <Property Name="AylikMiktar" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="KayitEden" Type="nvarchar" MaxLength="50" />
+          <Property Name="KayitTarihi" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="Bolumler">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Bolum" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FaturaBilgileri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YIL" Type="int" />
+          <Property Name="AY" Type="int" />
+          <Property Name="Miktar" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="FaturaYeriID" Type="int" />
+        </EntityType>
+        <EntityType Name="FaturaYeri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FaturaYeri" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Hedefler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yil" Type="int" />
+          <Property Name="Ay" Type="int" />
+          <Property Name="HedefDeger" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="BolumId" Type="int" />
         </EntityType>
         <EntityType Name="Kullanicilar">
           <Key>
@@ -32,6 +71,8 @@
           <Property Name="MakineAdi" Type="nvarchar" MaxLength="50" />
           <Property Name="Bolum" Type="int" />
           <Property Name="KWH" Type="decimal" Precision="9" Scale="3" />
+          <Property Name="YrdTesisMakTipi" Type="nvarchar" MaxLength="30" />
+          <Property Name="BasincDegeri" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MakineCalismaSureleri">
           <Key>
@@ -45,8 +86,91 @@
           <Property Name="KayitEden" Type="nvarchar" MaxLength="50" />
           <Property Name="KayitTarihi" Type="datetime" />
           <Property Name="ToplamTuketimKwh" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="BasincKWh" Type="decimal" Precision="18" Scale="4" />
           <Property Name="BolumID" Type="int" />
+          <Property Name="KayitliMi" Type="bit" />
+          <Property Name="M3" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'POLY_ENERJI.dbo.View_Bolum_Aylik_Calisma_Sureleri_Detay' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Bolum_Aylik_Calisma_Sureleri_Detay">
+          <Key>
+            <PropertyRef Name="row_num" />
+          </Key>
+          <Property Name="row_num" Type="int" Nullable="false" />
+          <Property Name="Yil" Type="int" />
+          <Property Name="Ay" Type="int" />
+          <Property Name="Toplam" Type="decimal" Precision="38" Scale="3" />
+          <Property Name="Bolum" Type="nvarchar" MaxLength="50" />
+          <Property Name="YTToplam" Type="decimal" Precision="38" Scale="4" />
+          <Property Name="YrdTesisMakTipi" Type="nvarchar" MaxLength="30" />
+          <Property Name="BasincDegeri" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'POLY_ENERJI.dbo.View_Bolum_Aylik_Calisma_Sureleris' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Bolum_Aylik_Calisma_Sureleris">
+          <Key>
+            <PropertyRef Name="row_num" />
+          </Key>
+          <Property Name="row_num" Type="int" Nullable="false" />
+          <Property Name="Yil" Type="int" />
+          <Property Name="Ay" Type="int" />
+          <Property Name="Bolum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Toplam" Type="decimal" Precision="38" Scale="3" />
+          <Property Name="m3" Type="int" />
+          <Property Name="YrdTesisMakTipi" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'POLY_ENERJI.dbo.View_Bolum_Aylik_Calisma_Suresi_Basinc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Bolum_Aylik_Calisma_Suresi_Basinc">
+          <Key>
+            <PropertyRef Name="row_num" />
+          </Key>
+          <Property Name="row_num" Type="int" Nullable="false" />
+          <Property Name="Yil" Type="int" />
+          <Property Name="Ay" Type="int" />
+          <Property Name="Bolum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Toplam" Type="decimal" Precision="38" Scale="3" />
+          <Property Name="m3" Type="int" />
+          <Property Name="YrdTesisMakTipi" Type="nvarchar" MaxLength="30" />
+          <Property Name="BasincDegeri" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AylikUretimVerileri_Bolumler">
+          <End Role="Bolumler" Type="Self.Bolumler" Multiplicity="0..1" />
+          <End Role="AylikUretimVerileri" Type="Self.AylikUretimVerileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AylikUretimVerileri">
+              <PropertyRef Name="BolumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaturaBilgileri_FaturaYeri">
+          <End Role="FaturaYeri" Type="Self.FaturaYeri" Multiplicity="0..1" />
+          <End Role="FaturaBilgileri" Type="Self.FaturaBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FaturaYeri">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FaturaBilgileri">
+              <PropertyRef Name="FaturaYeriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hedefler_Bolumler">
+          <End Role="Bolumler" Type="Self.Bolumler" Multiplicity="0..1" />
+          <End Role="Hedefler" Type="Self.Hedefler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hedefler">
+              <PropertyRef Name="BolumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Makine_Bolumler">
           <End Role="Bolumler" Type="Self.Bolumler" Multiplicity="0..1" />
           <End Role="Makine" Type="Self.Makine" Multiplicity="*" />
@@ -84,10 +208,61 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="POLY_ENERJIModelStoreContainer">
+          <EntitySet Name="AylikUretimVerileri" EntityType="Self.AylikUretimVerileri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bolumler" EntityType="Self.Bolumler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FaturaBilgileri" EntityType="Self.FaturaBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FaturaYeri" EntityType="Self.FaturaYeri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hedefler" EntityType="Self.Hedefler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Makine" EntityType="Self.Makine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MakineCalismaSureleri" EntityType="Self.MakineCalismaSureleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Bolum_Aylik_Calisma_Sureleri_Detay" EntityType="Self.View_Bolum_Aylik_Calisma_Sureleri_Detay" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Bolum_Aylik_Calisma_Sureleri_Detay].[row_num] AS [row_num], 
+    [View_Bolum_Aylik_Calisma_Sureleri_Detay].[Yil] AS [Yil], 
+    [View_Bolum_Aylik_Calisma_Sureleri_Detay].[Ay] AS [Ay], 
+    [View_Bolum_Aylik_Calisma_Sureleri_Detay].[Toplam] AS [Toplam], 
+    [View_Bolum_Aylik_Calisma_Sureleri_Detay].[Bolum] AS [Bolum], 
+    [View_Bolum_Aylik_Calisma_Sureleri_Detay].[YTToplam] AS [YTToplam], 
+    [View_Bolum_Aylik_Calisma_Sureleri_Detay].[YrdTesisMakTipi] AS [YrdTesisMakTipi], 
+    [View_Bolum_Aylik_Calisma_Sureleri_Detay].[BasincDegeri] AS [BasincDegeri]
+    FROM [dbo].[View_Bolum_Aylik_Calisma_Sureleri_Detay] AS [View_Bolum_Aylik_Calisma_Sureleri_Detay]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Bolum_Aylik_Calisma_Sureleris" EntityType="Self.View_Bolum_Aylik_Calisma_Sureleris" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Bolum_Aylik_Calisma_Sureleris].[row_num] AS [row_num], 
+    [View_Bolum_Aylik_Calisma_Sureleris].[Yil] AS [Yil], 
+    [View_Bolum_Aylik_Calisma_Sureleris].[Ay] AS [Ay], 
+    [View_Bolum_Aylik_Calisma_Sureleris].[Bolum] AS [Bolum], 
+    [View_Bolum_Aylik_Calisma_Sureleris].[Toplam] AS [Toplam], 
+    [View_Bolum_Aylik_Calisma_Sureleris].[m3] AS [m3], 
+    [View_Bolum_Aylik_Calisma_Sureleris].[YrdTesisMakTipi] AS [YrdTesisMakTipi]
+    FROM [dbo].[View_Bolum_Aylik_Calisma_Sureleris] AS [View_Bolum_Aylik_Calisma_Sureleris]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Bolum_Aylik_Calisma_Suresi_Basinc" EntityType="Self.View_Bolum_Aylik_Calisma_Suresi_Basinc" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Bolum_Aylik_Calisma_Suresi_Basinc].[row_num] AS [row_num], 
+    [View_Bolum_Aylik_Calisma_Suresi_Basinc].[Yil] AS [Yil], 
+    [View_Bolum_Aylik_Calisma_Suresi_Basinc].[Ay] AS [Ay], 
+    [View_Bolum_Aylik_Calisma_Suresi_Basinc].[Bolum] AS [Bolum], 
+    [View_Bolum_Aylik_Calisma_Suresi_Basinc].[Toplam] AS [Toplam], 
+    [View_Bolum_Aylik_Calisma_Suresi_Basinc].[m3] AS [m3], 
+    [View_Bolum_Aylik_Calisma_Suresi_Basinc].[YrdTesisMakTipi] AS [YrdTesisMakTipi], 
+    [View_Bolum_Aylik_Calisma_Suresi_Basinc].[BasincDegeri] AS [BasincDegeri]
+    FROM [dbo].[View_Bolum_Aylik_Calisma_Suresi_Basinc] AS [View_Bolum_Aylik_Calisma_Suresi_Basinc]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AylikUretimVerileri_Bolumler" Association="Self.FK_AylikUretimVerileri_Bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="AylikUretimVerileri" EntitySet="AylikUretimVerileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaturaBilgileri_FaturaYeri" Association="Self.FK_FaturaBilgileri_FaturaYeri">
+            <End Role="FaturaYeri" EntitySet="FaturaYeri" />
+            <End Role="FaturaBilgileri" EntitySet="FaturaBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hedefler_Bolumler" Association="Self.FK_Hedefler_Bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="Hedefler" EntitySet="Hedefler" />
+          </AssociationSet>
           <AssociationSet Name="FK_Makine_Bolumler" Association="Self.FK_Makine_Bolumler">
             <End Role="Bolumler" EntitySet="Bolumler" />
             <End Role="Makine" EntitySet="Makine" />
@@ -101,8 +276,7 @@
             <End Role="MakineCalismaSureleri" EntitySet="MakineCalismaSureleri" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="POLY_ENERJIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -112,8 +286,29 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Bolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Makine" Relationship="Self.FK_Makine_Bolumler" FromRole="Bolumler" ToRole="Makine" />
-          <NavigationProperty Name="MakineCalismaSureleri" Relationship="Self.FK_MakineCalismaSureleri_Bolumler" FromRole="Bolumler" ToRole="MakineCalismaSureleri" />
+          <NavigationProperty Name="Hedefler" Relationship="POLY_ENERJIModel.FK_Hedefler_Bolumler" FromRole="Bolumler" ToRole="Hedefler" />
+          <NavigationProperty Name="AylikUretimVerileri" Relationship="POLY_ENERJIModel.FK_AylikUretimVerileri_Bolumler" FromRole="Bolumler" ToRole="AylikUretimVerileri" />
+          <NavigationProperty Name="MakineCalismaSureleri" Relationship="POLY_ENERJIModel.FK_MakineCalismaSureleri_Bolumler" FromRole="Bolumler" ToRole="MakineCalismaSureleri" />
+          <NavigationProperty Name="Makine" Relationship="POLY_ENERJIModel.FK_Makine_Bolumler" FromRole="Bolumler" ToRole="Makine" />
+        </EntityType>
+        <EntityType Name="FaturaBilgileri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YIL" Type="Int32" />
+          <Property Name="AY" Type="Int32" />
+          <Property Name="Miktar" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="FaturaYeriID" Type="Int32" />
+          <NavigationProperty Name="FaturaYeri" Relationship="Self.FK_FaturaBilgileri_FaturaYeri" FromRole="FaturaBilgileri" ToRole="FaturaYeri" />
+        </EntityType>
+        <EntityType Name="FaturaYeri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FaturaYeri1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FaturaBilgileri" Relationship="Self.FK_FaturaBilgileri_FaturaYeri" FromRole="FaturaYeri" ToRole="FaturaBilgileri" />
         </EntityType>
         <EntityType Name="Kullanicilar">
           <Key>
@@ -126,18 +321,103 @@
           <Property Name="Sifre" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Yetki" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Makine">
+        <Association Name="FK_FaturaBilgileri_FaturaYeri">
+          <End Role="FaturaYeri" Type="Self.FaturaYeri" Multiplicity="0..1" />
+          <End Role="FaturaBilgileri" Type="Self.FaturaBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FaturaYeri">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FaturaBilgileri">
+              <PropertyRef Name="FaturaYeriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="POLY_ENERJI" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bolumler" EntityType="Self.Bolumler" />
+          <EntitySet Name="FaturaBilgileri" EntityType="Self.FaturaBilgileri" />
+          <EntitySet Name="FaturaYeri" EntityType="Self.FaturaYeri" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <AssociationSet Name="FK_FaturaBilgileri_FaturaYeri" Association="Self.FK_FaturaBilgileri_FaturaYeri">
+            <End Role="FaturaYeri" EntitySet="FaturaYeri" />
+            <End Role="FaturaBilgileri" EntitySet="FaturaBilgileri" />
+          </AssociationSet>
+          <EntitySet Name="Hedefler" EntityType="POLY_ENERJIModel.Hedefler" />
+          <AssociationSet Name="FK_Hedefler_Bolumler" Association="POLY_ENERJIModel.FK_Hedefler_Bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="Hedefler" EntitySet="Hedefler" />
+          </AssociationSet>
+          <EntitySet Name="AylikUretimVerileri" EntityType="POLY_ENERJIModel.AylikUretimVerileri" />
+          <AssociationSet Name="FK_AylikUretimVerileri_Bolumler" Association="POLY_ENERJIModel.FK_AylikUretimVerileri_Bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="AylikUretimVerileri" EntitySet="AylikUretimVerileri" />
+          </AssociationSet>
+          <EntitySet Name="MakineCalismaSureleri" EntityType="POLY_ENERJIModel.MakineCalismaSureleri" />
+          <AssociationSet Name="FK_MakineCalismaSureleri_Bolumler" Association="POLY_ENERJIModel.FK_MakineCalismaSureleri_Bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="MakineCalismaSureleri" EntitySet="MakineCalismaSureleri" />
+          </AssociationSet>
+          <EntitySet Name="Makine" EntityType="POLY_ENERJIModel.Makine" />
+          <AssociationSet Name="FK_Makine_Bolumler" Association="POLY_ENERJIModel.FK_Makine_Bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="Makine" EntitySet="Makine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MakineCalismaSureleri_Makine" Association="POLY_ENERJIModel.FK_MakineCalismaSureleri_Makine">
+            <End Role="Makine" EntitySet="Makine" />
+            <End Role="MakineCalismaSureleri" EntitySet="MakineCalismaSureleri" />
+          </AssociationSet>
+          <EntitySet Name="View_Bolum_Aylik_Calisma_Sureleris" EntityType="POLY_ENERJIModel.View_Bolum_Aylik_Calisma_Sureleris" />
+          <EntitySet Name="View_Bolum_Aylik_Calisma_Sureleri_Detay" EntityType="POLY_ENERJIModel.View_Bolum_Aylik_Calisma_Sureleri_Detay" />
+          <EntitySet Name="View_Bolum_Aylik_Calisma_Suresi_Basinc" EntityType="POLY_ENERJIModel.View_Bolum_Aylik_Calisma_Suresi_Basinc" />
+          </EntityContainer>
+        <EntityType Name="Hedefler">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MakineNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MakineAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Bolum" Type="Int32" />
-          <Property Name="KWH" Type="Decimal" Precision="9" Scale="3" />
-          <NavigationProperty Name="Bolumler" Relationship="Self.FK_Makine_Bolumler" FromRole="Makine" ToRole="Bolumler" />
-          <NavigationProperty Name="MakineCalismaSureleri" Relationship="Self.FK_MakineCalismaSureleri_Makine" FromRole="Makine" ToRole="MakineCalismaSureleri" />
+          <Property Name="Yil" Type="Int32" />
+          <Property Name="Ay" Type="Int32" />
+          <Property Name="HedefDeger" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="BolumId" Type="Int32" />
+          <NavigationProperty Name="Bolumler" Relationship="POLY_ENERJIModel.FK_Hedefler_Bolumler" FromRole="Hedefler" ToRole="Bolumler" />
         </EntityType>
+        <Association Name="FK_Hedefler_Bolumler">
+          <End Type="POLY_ENERJIModel.Bolumler" Role="Bolumler" Multiplicity="0..1" />
+          <End Type="POLY_ENERJIModel.Hedefler" Role="Hedefler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Hedefler">
+              <PropertyRef Name="BolumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AylikUretimVerileri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BolumID" Type="Int32" />
+          <Property Name="Yil" Type="Int32" />
+          <Property Name="Ay" Type="Int32" />
+          <Property Name="AylikMiktar" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="KayitEden" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KayitTarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Bolumler" Relationship="POLY_ENERJIModel.FK_AylikUretimVerileri_Bolumler" FromRole="AylikUretimVerileri" ToRole="Bolumler" />
+        </EntityType>
+        <Association Name="FK_AylikUretimVerileri_Bolumler">
+          <End Type="POLY_ENERJIModel.Bolumler" Role="Bolumler" Multiplicity="0..1" />
+          <End Type="POLY_ENERJIModel.AylikUretimVerileri" Role="AylikUretimVerileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AylikUretimVerileri">
+              <PropertyRef Name="BolumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="MakineCalismaSureleri">
           <Key>
             <PropertyRef Name="ID" />
@@ -150,25 +430,16 @@
           <Property Name="KayitEden" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="KayitTarihi" Type="DateTime" Precision="3" />
           <Property Name="ToplamTuketimKwh" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="BasincKWh" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="BolumID" Type="Int32" />
-          <NavigationProperty Name="Bolumler" Relationship="Self.FK_MakineCalismaSureleri_Bolumler" FromRole="MakineCalismaSureleri" ToRole="Bolumler" />
-          <NavigationProperty Name="Makine" Relationship="Self.FK_MakineCalismaSureleri_Makine" FromRole="MakineCalismaSureleri" ToRole="Makine" />
+          <Property Name="KayitliMi" Type="Boolean" />
+          <Property Name="M3" Type="Int32" />
+          <NavigationProperty Name="Bolumler" Relationship="POLY_ENERJIModel.FK_MakineCalismaSureleri_Bolumler" FromRole="MakineCalismaSureleri" ToRole="Bolumler" />
+          <NavigationProperty Name="Makine" Relationship="POLY_ENERJIModel.FK_MakineCalismaSureleri_Makine" FromRole="MakineCalismaSureleri" ToRole="Makine" />
         </EntityType>
-        <Association Name="FK_Makine_Bolumler">
-          <End Role="Bolumler" Type="Self.Bolumler" Multiplicity="0..1" />
-          <End Role="Makine" Type="Self.Makine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bolumler">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Makine">
-              <PropertyRef Name="Bolum" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MakineCalismaSureleri_Bolumler">
-          <End Role="Bolumler" Type="Self.Bolumler" Multiplicity="0..1" />
-          <End Role="MakineCalismaSureleri" Type="Self.MakineCalismaSureleri" Multiplicity="*" />
+          <End Type="POLY_ENERJIModel.Bolumler" Role="Bolumler" Multiplicity="0..1" />
+          <End Type="POLY_ENERJIModel.MakineCalismaSureleri" Role="MakineCalismaSureleri" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bolumler">
               <PropertyRef Name="ID" />
@@ -178,9 +449,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Makine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MakineNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MakineAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bolum" Type="Int32" />
+          <Property Name="KWH" Type="Decimal" Precision="9" Scale="3" />
+          <Property Name="YrdTesisMakTipi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BasincDegeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bolumler" Relationship="POLY_ENERJIModel.FK_Makine_Bolumler" FromRole="Makine" ToRole="Bolumler" />
+          <NavigationProperty Name="MakineCalismaSureleri" Relationship="POLY_ENERJIModel.FK_MakineCalismaSureleri_Makine" FromRole="Makine" ToRole="MakineCalismaSureleri" />
+        </EntityType>
+        <Association Name="FK_Makine_Bolumler">
+          <End Type="POLY_ENERJIModel.Bolumler" Role="Bolumler" Multiplicity="0..1" />
+          <End Type="POLY_ENERJIModel.Makine" Role="Makine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Makine">
+              <PropertyRef Name="Bolum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MakineCalismaSureleri_Makine">
-          <End Role="Makine" Type="Self.Makine" Multiplicity="1" />
-          <End Role="MakineCalismaSureleri" Type="Self.MakineCalismaSureleri" Multiplicity="*" />
+          <End Type="POLY_ENERJIModel.Makine" Role="Makine" Multiplicity="1" />
+          <End Type="POLY_ENERJIModel.MakineCalismaSureleri" Role="MakineCalismaSureleri" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Makine">
               <PropertyRef Name="ID" />
@@ -190,35 +487,74 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="POLY_ENERJIEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Bolumler" EntityType="Self.Bolumler" />
-          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
-          <EntitySet Name="Makine" EntityType="Self.Makine" />
-          <EntitySet Name="MakineCalismaSureleri" EntityType="Self.MakineCalismaSureleri" />
-          <AssociationSet Name="FK_Makine_Bolumler" Association="Self.FK_Makine_Bolumler">
-            <End Role="Bolumler" EntitySet="Bolumler" />
-            <End Role="Makine" EntitySet="Makine" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MakineCalismaSureleri_Bolumler" Association="Self.FK_MakineCalismaSureleri_Bolumler">
-            <End Role="Bolumler" EntitySet="Bolumler" />
-            <End Role="MakineCalismaSureleri" EntitySet="MakineCalismaSureleri" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MakineCalismaSureleri_Makine" Association="Self.FK_MakineCalismaSureleri_Makine">
-            <End Role="Makine" EntitySet="Makine" />
-            <End Role="MakineCalismaSureleri" EntitySet="MakineCalismaSureleri" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        <EntityType Name="View_Bolum_Aylik_Calisma_Sureleris">
+          <Key>
+            <PropertyRef Name="row_num" />
+          </Key>
+          <Property Name="row_num" Type="Int32" Nullable="false" />
+          <Property Name="Yil" Type="Int32" />
+          <Property Name="Ay" Type="Int32" />
+          <Property Name="Bolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Toplam" Type="Decimal" Precision="38" Scale="3" />
+          <Property Name="m3" Type="Int32" />
+          <Property Name="YrdTesisMakTipi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Bolum_Aylik_Calisma_Sureleri_Detay">
+          <Key>
+            <PropertyRef Name="row_num" />
+          </Key>
+          <Property Name="row_num" Type="Int32" Nullable="false" />
+          <Property Name="Yil" Type="Int32" />
+          <Property Name="Ay" Type="Int32" />
+          <Property Name="Toplam" Type="Decimal" Precision="38" Scale="3" />
+          <Property Name="Bolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YTToplam" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="YrdTesisMakTipi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BasincDegeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Bolum_Aylik_Calisma_Suresi_Basinc">
+          <Key>
+            <PropertyRef Name="row_num" />
+          </Key>
+          <Property Name="row_num" Type="Int32" Nullable="false" />
+          <Property Name="Yil" Type="Int32" />
+          <Property Name="Ay" Type="Int32" />
+          <Property Name="Bolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Toplam" Type="Decimal" Precision="38" Scale="3" />
+          <Property Name="m3" Type="Int32" />
+          <Property Name="YrdTesisMakTipi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BasincDegeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="POLY_ENERJIModelStoreContainer" CdmEntityContainer="POLY_ENERJIEntities">
+        <EntityContainerMapping StorageEntityContainer="POLY_ENERJIModelStoreContainer" CdmEntityContainer="POLY_ENERJI">
           <EntitySetMapping Name="Bolumler">
             <EntityTypeMapping TypeName="POLY_ENERJIModel.Bolumler">
               <MappingFragment StoreEntitySet="Bolumler">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FaturaBilgileri">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.FaturaBilgileri">
+              <MappingFragment StoreEntitySet="FaturaBilgileri">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="YIL" ColumnName="YIL" />
+                <ScalarProperty Name="AY" ColumnName="AY" />
+                <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+                <ScalarProperty Name="FaturaYeriID" ColumnName="FaturaYeriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FaturaYeri">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.FaturaYeri">
+              <MappingFragment StoreEntitySet="FaturaYeri">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FaturaYeri1" ColumnName="FaturaYeri" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -234,29 +570,99 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Makine">
-            <EntityTypeMapping TypeName="POLY_ENERJIModel.Makine">
-              <MappingFragment StoreEntitySet="Makine">
+          <EntitySetMapping Name="Hedefler">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.Hedefler">
+              <MappingFragment StoreEntitySet="Hedefler">
+                <ScalarProperty Name="BolumId" ColumnName="BolumId" />
+                <ScalarProperty Name="HedefDeger" ColumnName="HedefDeger" />
+                <ScalarProperty Name="Ay" ColumnName="Ay" />
+                <ScalarProperty Name="Yil" ColumnName="Yil" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MakineNo" ColumnName="MakineNo" />
-                <ScalarProperty Name="MakineAdi" ColumnName="MakineAdi" />
-                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
-                <ScalarProperty Name="KWH" ColumnName="KWH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AylikUretimVerileri">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.AylikUretimVerileri">
+              <MappingFragment StoreEntitySet="AylikUretimVerileri">
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="KayitEden" ColumnName="KayitEden" />
+                <ScalarProperty Name="AylikMiktar" ColumnName="AylikMiktar" />
+                <ScalarProperty Name="Ay" ColumnName="Ay" />
+                <ScalarProperty Name="Yil" ColumnName="Yil" />
+                <ScalarProperty Name="BolumID" ColumnName="BolumID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MakineCalismaSureleri">
             <EntityTypeMapping TypeName="POLY_ENERJIModel.MakineCalismaSureleri">
               <MappingFragment StoreEntitySet="MakineCalismaSureleri">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MakineID" ColumnName="MakineID" />
-                <ScalarProperty Name="Yil" ColumnName="Yil" />
-                <ScalarProperty Name="Ay" ColumnName="Ay" />
-                <ScalarProperty Name="CalismaSuresi" ColumnName="CalismaSuresi" />
-                <ScalarProperty Name="KayitEden" ColumnName="KayitEden" />
-                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
-                <ScalarProperty Name="ToplamTuketimKwh" ColumnName="ToplamTuketimKwh" />
+                <ScalarProperty Name="M3" ColumnName="M3" />
+                <ScalarProperty Name="KayitliMi" ColumnName="KayitliMi" />
                 <ScalarProperty Name="BolumID" ColumnName="BolumID" />
+                <ScalarProperty Name="BasincKWh" ColumnName="BasincKWh" />
+                <ScalarProperty Name="ToplamTuketimKwh" ColumnName="ToplamTuketimKwh" />
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="KayitEden" ColumnName="KayitEden" />
+                <ScalarProperty Name="CalismaSuresi" ColumnName="CalismaSuresi" />
+                <ScalarProperty Name="Ay" ColumnName="Ay" />
+                <ScalarProperty Name="Yil" ColumnName="Yil" />
+                <ScalarProperty Name="MakineID" ColumnName="MakineID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Makine">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.Makine">
+              <MappingFragment StoreEntitySet="Makine">
+                <ScalarProperty Name="BasincDegeri" ColumnName="BasincDegeri" />
+                <ScalarProperty Name="YrdTesisMakTipi" ColumnName="YrdTesisMakTipi" />
+                <ScalarProperty Name="KWH" ColumnName="KWH" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="MakineAdi" ColumnName="MakineAdi" />
+                <ScalarProperty Name="MakineNo" ColumnName="MakineNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Bolum_Aylik_Calisma_Sureleris">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.View_Bolum_Aylik_Calisma_Sureleris">
+              <MappingFragment StoreEntitySet="View_Bolum_Aylik_Calisma_Sureleris">
+                <ScalarProperty Name="YrdTesisMakTipi" ColumnName="YrdTesisMakTipi" />
+                <ScalarProperty Name="m3" ColumnName="m3" />
+                <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="Ay" ColumnName="Ay" />
+                <ScalarProperty Name="Yil" ColumnName="Yil" />
+                <ScalarProperty Name="row_num" ColumnName="row_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Bolum_Aylik_Calisma_Sureleri_Detay">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.View_Bolum_Aylik_Calisma_Sureleri_Detay">
+              <MappingFragment StoreEntitySet="View_Bolum_Aylik_Calisma_Sureleri_Detay">
+                <ScalarProperty Name="BasincDegeri" ColumnName="BasincDegeri" />
+                <ScalarProperty Name="YrdTesisMakTipi" ColumnName="YrdTesisMakTipi" />
+                <ScalarProperty Name="YTToplam" ColumnName="YTToplam" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+                <ScalarProperty Name="Ay" ColumnName="Ay" />
+                <ScalarProperty Name="Yil" ColumnName="Yil" />
+                <ScalarProperty Name="row_num" ColumnName="row_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Bolum_Aylik_Calisma_Suresi_Basinc">
+            <EntityTypeMapping TypeName="POLY_ENERJIModel.View_Bolum_Aylik_Calisma_Suresi_Basinc">
+              <MappingFragment StoreEntitySet="View_Bolum_Aylik_Calisma_Suresi_Basinc">
+                <ScalarProperty Name="BasincDegeri" ColumnName="BasincDegeri" />
+                <ScalarProperty Name="YrdTesisMakTipi" ColumnName="YrdTesisMakTipi" />
+                <ScalarProperty Name="m3" ColumnName="m3" />
+                <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="Ay" ColumnName="Ay" />
+                <ScalarProperty Name="Yil" ColumnName="Yil" />
+                <ScalarProperty Name="row_num" ColumnName="row_num" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

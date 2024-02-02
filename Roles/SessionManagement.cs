@@ -14,11 +14,16 @@ namespace PolyteksEnerjiYonetimSistemi.Roles
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            HttpSessionStateBase session = filterContext.HttpContext.Session;
+            Controller controller = filterContext.Controller as Controller;
             HttpContext httpContext = HttpContext.Current;
-            if (HttpContext.Current.Session["userId"] == null)
+            if (controller != null)
             {
-                filterContext.Result = new RedirectResult("~/Home/Giris");
-                return;
+                if (HttpContext.Current.Session["Giris"] == null)
+                {
+                    filterContext.Result = new RedirectResult("~/Home/Giris");
+                    return;
+                }
             }
             base.OnActionExecuting(filterContext);
 

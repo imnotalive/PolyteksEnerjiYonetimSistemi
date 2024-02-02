@@ -2,59 +2,57 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<h2>Create</h2>
+
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Makine</h4>
-        <hr />
+ 
+   
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.MakineNo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.MakineNo,"MAKİNE NO", htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.MakineNo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MakineNo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MakineAdi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.MakineAdi,"MAKİNE ADI", htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.MakineAdi, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MakineAdi, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Bolum, "Bolum", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Bolum", null, htmlAttributes: new { @class = "form-control" })
+            @Html.LabelFor(model => model.Bolum, "BÖLÜM", htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.DropDownList("Bolum", null,"--SEÇİNİZ--", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Bolum, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.KWH, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.KWH,"KWH", htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
                 @Html.EditorFor(model => model.KWH, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.KWH, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br />
+        <br />
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-12 col-md-12">
+                <input type="submit" value="Yeni Makine Oluştur" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

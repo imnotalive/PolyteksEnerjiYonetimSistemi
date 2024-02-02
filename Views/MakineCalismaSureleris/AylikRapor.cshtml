@@ -1,0 +1,2573 @@
+﻿@model IEnumerable<PolyteksEnerjiYonetimSistemi.Models.View_Bolum_Aylik_Calisma_Sureleris>
+
+@{
+    ViewBag.Title = "AylikRapor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+
+
+
+
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.AddYears(-1).Year EKİM DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+                            <tr>
+                            </tr>
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                       @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 10 && item.Yil == DateTime.Now.Year-1)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 10 && hedef.Yil == DateTime.Now.Year - 1)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                            <td></td>
+                        </tr>
+                                }
+                            }
+                            EKİM AYI TOPLAMI:    @Model.Where(item => item.Ay == 10 && item.Yil == DateTime.Now.Year-1).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        <table class="table table-bordered table-hover table-primary">
+
+
+
+                            <thead>
+                                <tr>
+                                    @*<th>
+            @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+        </th>
+        <th>
+            @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+        </th>
+        <th>
+            @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+        </th>
+        <th>
+            @Html.DisplayName("Toplam Enerji (kwh/ay)")
+        </th>*@
+                                    <th></th>
+                                    <th>
+                                        @Html.DisplayName("kompresör kWh")
+                                     
+                                   
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("kule kWh")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("kurutucu kWh")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("Toplam Enerji (kwh/ay)")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("toplam hava (m3/ay)")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("hava oranı")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("kw oranı")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("kWh/m³")
+                                            </th>
+                                        </tr>
+
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("10 BAR")
+                                        @foreach (var items in ViewBag.basinc)
+                                        {
+                                            if (items.Ay == 10 && items.Yil == DateTime.Now.Year - 1)
+                                            {
+
+                                                if (items.BasincDegeri == "10" && items.YrdTesisMakTipi == "KOMPRESOR")
+                                                {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.YrdTesisMakTipi == "KULE")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.YrdTesisMakTipi == "KURUTUCU")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                        }
+                                    }
+                                        </th>
+
+                                    </tr>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("7 BAR")
+                                        @foreach (var items in ViewBag.basinc)
+                                        {
+                                            if (items.Ay == 10 && items.Yil == DateTime.Now.Year - 1)
+                                            {
+
+                                                if (items.BasincDegeri == "7" && items.YrdTesisMakTipi == "KOMPRESOR")
+                                                {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.YrdTesisMakTipi == "KULE")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.YrdTesisMakTipi == "KURUTUCU")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                        }
+                                    }
+                                        </th>
+
+                                    </tr>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("5.5 BAR")
+                                        @foreach (var items in ViewBag.basinc)
+                                        {
+                                            if (items.Ay == 10 && items.Yil == DateTime.Now.Year - 1)
+                                            {
+
+                                                if (items.BasincDegeri == "5" && items.YrdTesisMakTipi == "KOMPRESOR")
+                                                {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.YrdTesisMakTipi == "KULE")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.YrdTesisMakTipi == "KURUTUCU")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                        }
+                                    }
+                                        </th>
+
+                                    </tr>
+                                <tr>
+                                    <th>
+
+                                        @foreach (var items in ViewBag.basinc)
+                                        {
+                                            if (items.Ay == 10 && items.Yil == DateTime.Now.Year - 1)
+                                            {
+
+                                                if (items.YrdTesisMakTipi == "KOMPRESOR")
+                                                {
+                                                <th>
+                                              
+                                                    @items.Toplam.ToString("N2")
+                                             
+                                                </th>
+                                            }
+                                        }
+                                    }
+                                        </th>
+
+                                    </tr>
+                                
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @*@foreach (var items in ViewBag.basinc)
+                                    {
+                                        if (items.Ay == 10 && items.Yil == DateTime.Now.Year - 1)
+                                        {
+
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }*@
+                                            @*if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }*@
+
+                                  
+
+
+
+
+
+
+
+
+                                </tr>
+                                <tr></tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.AddYears(-1).Year KASIM DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 11 && item.Yil == DateTime.Now.Year - 1)
+                                {
+                                    <tr style="background-color:whitesmoke">
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                                        </td>
+                                        <td>
+                                            @item.Toplam.Value.ToString("N2")
+                                        </td>
+
+
+                                        <td> @Html.DisplayFor(modelItem => item.m3)</td>
+
+
+                                        <td>
+                                            @foreach (var uretim in ViewBag.uretim)
+                                            {
+                                                if (uretim.Ay == 11 && uretim.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    if (item.Bolum == uretim.Bolumler.Bolum)
+                                                    {
+                                                    @uretim.AylikMiktar.ToString("N2")}
+                                                }
+                                            }
+
+
+                                        </td>
+                                        <td>    @foreach (var uretim in ViewBag.uretim)
+                                            {
+                                                if (uretim.Ay == 11 && uretim.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    if (item.Bolum == uretim.Bolumler.Bolum)
+                                                    {
+                                       var a= item.Toplam / uretim.AylikMiktar;
+                                                    @a.ToString("N2")
+                                                }
+                                            }
+                                        }
+                                        <td>
+                                            @foreach (var hedef in ViewBag.hedef)
+                                            {
+
+                                                if (hedef.Ay == 11 && hedef.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    if (item.Bolum == hedef.Bolumler.Bolum)
+                                                    {@hedef.HedefDeger}
+                                            }
+
+                                        }
+
+
+                                        </td>
+
+
+                                    </tr>
+                                }
+                            }
+                            KASIM AYI TOPLAMI:    @Model.Where(item => item.Ay == 11 && item.Yil == DateTime.Now.Year - 1).Sum(item => item.Toplam).Value.ToString("N2")
+
+                        </table>
+                        <table class="table table-bordered table-hover table-primary">
+
+
+
+                            <thead>
+                                <tr>
+                                    @*<th>
+                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                    </th>
+                    <th>
+                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                    </th>
+                    <th>
+                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Toplam Enerji (kwh/ay)")
+                    </th>*@
+                                    <th></th>
+                                    <th>
+                                        @Html.DisplayName("kompresör kWh")
+
+
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("kule kWh")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("kurutucu kWh")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Toplam Enerji (kwh/ay)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("toplam hava (m3/ay)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("hava oranı")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("kw oranı")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("kWh/m³")
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("10 BAR")
+                                        @foreach (var items in ViewBag.basinc)
+                                        {
+                                            if (items.Ay == 11 && items.Yil == DateTime.Now.Year - 1)
+                                            {
+
+                                                if (items.BasincDegeri == "10" && items.YrdTesisMakTipi == "KOMPRESOR")
+                                                {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.YrdTesisMakTipi == "KULE")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.YrdTesisMakTipi == "KURUTUCU")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                        }
+                                    }
+                                        </th>
+
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayName("7 BAR")
+                                            @foreach (var items in ViewBag.basinc)
+                                            {
+                                                if (items.Ay == 11 && items.Yil == DateTime.Now.Year - 1)
+                                                {
+
+                                                    if (items.BasincDegeri == "7" && items.YrdTesisMakTipi == "KOMPRESOR")
+                                                    {
+                                                    <td>
+                                                        @items.Toplam.ToString("N2")
+                                                    </td>
+                                                }
+                                                if (items.YrdTesisMakTipi == "KULE")
+                                                {
+                                                    <td>
+                                                        @items.Toplam.ToString("N2")
+                                                    </td>
+                                                }
+                                                if (items.YrdTesisMakTipi == "KURUTUCU")
+                                                {
+                                                    <td>
+                                                        @items.Toplam.ToString("N2")
+                                                    </td>
+                                                }
+                                            }
+                                        }
+                                            </th>
+
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayName("5.5 BAR")
+                                                @foreach (var items in ViewBag.basinc)
+                                                {
+                                                    if (items.Ay == 11 && items.Yil == DateTime.Now.Year - 1)
+                                                    {
+
+                                                        if (items.BasincDegeri == "5" && items.YrdTesisMakTipi == "KOMPRESOR")
+                                                        {
+                                                        <td>
+                                                            @items.Toplam.ToString("N2")
+                                                        </td>
+                                                    }
+                                                    if (items.YrdTesisMakTipi == "KULE")
+                                                    {
+                                                        <td>
+                                                            @items.Toplam.ToString("N2")
+                                                        </td>
+                                                    }
+                                                    if (items.YrdTesisMakTipi == "KURUTUCU")
+                                                    {
+                                                        <td>
+                                                            @items.Toplam.ToString("N2")
+                                                        </td>
+                                                    }
+                                                }
+                                            }
+                                                </th>
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+
+                                                    @foreach (var items in ViewBag.basinc)
+                                                    {
+                                                        if (items.Ay == 11 && items.Yil == DateTime.Now.Year - 1)
+                                                        {
+
+                                                            if (items.YrdTesisMakTipi == "KOMPRESOR" && items.BasincDegeri == "5" || items.BasincDegeri == "7"|| items.BasincDegeri == "10")
+                                                            {
+                                                            <th>
+
+                                                                @Model.Sum(a=>a.Toplam)
+
+                                                            </th>
+                                                        }
+                                                    }
+                                                }
+                                                    </th>
+
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+                                                <tr style="background-color:#5c9df8">
+                                                    @*@foreach (var items in ViewBag.basinc)
+                                    {
+                                        if (items.Ay == 10 && items.Yil == DateTime.Now.Year - 1)
+                                        {
+
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }*@
+                                                    @*if (items.BasincDegeri == "5")
+                                    {
+                                        <td>
+                                            @items.Toplam.ToString("N2")
+                                        </td>
+                                    }
+                                    if (items.BasincDegeri == "7")
+                                    {
+                                        <td>
+                                            @items.Toplam.ToString("N2")
+                                        </td>
+                                    }*@
+
+
+
+
+
+
+
+
+
+
+                                                </tr>
+                                                <tr></tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.AddYears(-1).Year ARALIK DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+                            <tr>
+                            </tr>
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 12 && item.Yil == DateTime.Now.Year - 1)
+                                {
+                                    <tr style="background-color:whitesmoke">
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                                        </td>
+                                        <td>
+                                            @item.Toplam.Value.ToString("N2")
+                                        </td>
+
+
+                                        <td> @Html.DisplayFor(modelItem => item.m3)</td>
+
+
+                                        <td>
+                                            @foreach (var uretim in ViewBag.uretim)
+                                            {
+                                                if (uretim.Ay == 12 && uretim.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    if (item.Bolum == uretim.Bolumler.Bolum)
+                                                    {
+                                                        @uretim.AylikMiktar.ToString("N2")}
+                                                }
+                                            }
+
+
+                                        </td>
+                                        <td>
+                                            @foreach (var uretim in ViewBag.uretim)
+                                            {
+                                                if (uretim.Ay == 12 && uretim.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    if (item.Bolum == uretim.Bolumler.Bolum)
+                                                    {
+                                                        var a = item.Toplam / uretim.AylikMiktar;
+                                                        @a.ToString("N2")
+                                                    }
+                                                }
+                                            }
+                                        <td>
+                                            @foreach (var hedef in ViewBag.hedef)
+                                            {
+
+                                                if (hedef.Ay == 12 && hedef.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    if (item.Bolum == hedef.Bolumler.Bolum)
+                                                    {@hedef.HedefDeger}
+                                            }
+
+                                        }
+
+
+                                        </td>
+
+
+                                    </tr>
+                                }
+                            }
+                            ARALIK AYI TOPLAMI:    @Model.Where(item => item.Ay == 12 && item.Yil == DateTime.Now.Year - 1).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+
+
+                                        if (items.Ay == 12 && items.Yil == DateTime.Now.Year-1)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+
+                                                <td>
+                                                    @items.YTToplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.YTToplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.YTToplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year OCAK DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 1 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 1 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+
+                                }
+
+                            }
+                            OCAK AYI TOPLAMI:    @Model.Where(item => item.Ay == 1 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+                                        if (items.Ay == 1 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year ŞUBAT DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                     @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 2 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 2 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+                                }
+                            }
+                            ŞUBAT AYI TOPLAMI:    @Model.Where(item => item.Ay == 2 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+                                        if (items.Ay == 2 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-6">
+
+
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year MART DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                    @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 3 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 3 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+                                }
+                            }
+                            MART AYI TOPLAMI:    @Model.Where(item => item.Ay == 3 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+                                        if (items.Ay == 3 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year NİSAN DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 4 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 4 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+                                }
+                            }
+                            NİSAN AYI TOPLAMI:    @Model.Where(item => item.Ay == 4 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+                                        if (items.Ay == 4 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year MAYIS DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                         @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 5 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 5 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+                                }
+                            }
+                            MAYIS AYI TOPLAMI:    @Model.Where(item => item.Ay == 5 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+                                        if (items.Ay == 5 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year HAZİRAN DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 6 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 6 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+                                }
+                            }
+                            HAZİRAN AYI TOPLAMI:    @Model.Where(item => item.Ay == 6 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+                                        if (items.Ay == 6 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year TEMMUZ DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+                                    <th>
+                                         @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 7 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 7 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+                                }
+                            }
+                            TEMMUZ AYI TOPLAMI:    @Model.Where(item => item.Ay == 7 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+                                        if (items.Ay == 7 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year AĞUSTOS DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+                            <tr>
+                            </tr>
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                         @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 8 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 8 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+                                }
+                            }
+                            AĞUSTOS AYI TOPLAMI:    @Model.Where(item => item.Ay == 8 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+                                        if (items.Ay == 8 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year EYLÜL DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+                            <tr>
+                            </tr>
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 9 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 9 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+                                }
+                            }
+                            EYLÜL AYI TOPLAMI:    @Model.Where(item => item.Ay == 9 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+                                        if (items.Ay == 9 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year EKİM DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+                            <tr>
+                            </tr>
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 10 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 10 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+                                }
+                            }
+                            EKİM AYI TOPLAMI:    @Model.Where(item => item.Ay == 10 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+                                        if (items.Ay == 10 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year KASIM DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+                                    <th>
+                                      @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 11 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 11 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+
+
+                        </tr>
+                                }
+                            }
+                            KASIM AYI TOPLAMI:    @Model.Where(item => item.Ay == 11 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+
+
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+
+
+                            <tr style="background-color:#5c9df8">
+                                <th colspan="2">
+                                        @Html.DisplayName("KOMPRESÖR KWh")
+                                    </th>
+                                @foreach (var items in ViewBag.aylik)
+                                {
+
+                                    if (items.Ay == 11 && items.Yil == DateTime.Now.Year)
+                                    {
+
+                                        if (items.BasincDegeri == "5")
+                                        {
+
+
+                                            <td>
+                                                @items.YTToplam.ToString("N2")
+                                            </td>
+                                        }
+                                        if (items.BasincDegeri == "7")
+                                        {
+                                            <td>
+                                                @items.YTToplam.ToString("N2")
+                                            </td>
+                                        }
+                                        if (items.BasincDegeri == "10")
+                                        {
+                                            <td>
+                                                @items.YTToplam.ToString("N2")
+                                            </td>
+                                        }
+                                        if (items.BasincDegeri == "FDY")
+                                        {
+                                            <td>
+                                                @items.Toplam.ToString("N2")
+                                            </td>
+                                        }
+                                        if (items.BasincDegeri == "POY")
+                                        {
+                                            <td>
+                                                @items.Toplam.ToString("N2")
+                                            </td>
+                                        }
+
+                                    }
+                                }
+                            </tr>
+
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    POLYTEKS  AŞ.
+                    ELEKTRİK  TÜKETİMİ
+                    @DateTime.Now.Year ARALIK DÖNEMİ
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-primary">
+
+                            <tr>
+                            </tr>
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("BÖLÜM")
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayName("TOPLAM ENERJİ TÜKETİMİ(KWH)")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("m³/dk")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("KWH / KG")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("HEDEF (KWH / KG)")
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.Ay == 12 && item.Yil == DateTime.Now.Year)
+                                {
+                        <tr style="background-color:#5c9df8">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bolum) <b>@Html.DisplayFor(modelItem => item.YrdTesisMakTipi)</b>
+                            </td>
+                            <td>
+                                @item.Toplam.Value.ToString("N2")
+                            </td>
+                            <td> @Html.DisplayFor(modelItem => item.m3)</td>
+                            <td></td>
+                            <td>
+                                @foreach (var hedef in ViewBag.hedef)
+                                {
+
+                                    if (hedef.Ay == 12 && hedef.Yil == DateTime.Now.Year)
+                                    {
+                                        if (item.Bolum == hedef.Bolumler.Bolum)
+                                        {@hedef.HedefDeger}
+                                }
+
+                            }
+
+
+                            </td>
+                        </tr>
+                                }
+                            }
+                            ARALIK AYI TOPLAMI:    @Model.Where(item => item.Ay == 12 && item.Yil == DateTime.Now.Year).Sum(item => item.Toplam).Value.ToString("N2")
+                        </table>
+                        @*<table class="table table-bordered table-hover table-primary transpose">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  10 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  5,5 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("YARDIMCI TESİSLER  7 BAR")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  FDY")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("ÜRETİM  POY")
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#5c9df8">
+                                    @foreach (var items in ViewBag.aylik)
+                                    {
+
+
+                                        if (items.Ay == 12 && items.Yil == DateTime.Now.Year)
+                                        {
+
+                                            if (items.BasincDegeri == "5")
+                                            {
+
+                                                <td>
+                                                    @items.YTToplamToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "7")
+                                            {
+                                                <td>
+                                                    @items.YTToplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "10")
+                                            {
+                                                <td>
+                                                    @items.YTToplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "FDY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+                                            if (items.BasincDegeri == "POY")
+                                            {
+                                                <td>
+                                                    @items.Toplam.ToString("N2")
+                                                </td>
+                                            }
+
+                                        }
+                                    }
+                                </tr>
+                            </tbody>
+
+                        </table>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .transpose thead,
+    .transpose tbody,
+    .transpose tr {
+        display: inline-block;
+    }
+
+        .transpose tbody tr {
+            margin-right: -.27em;
+        }
+
+    .transpose th,
+    .transpose td {
+        display: block;
+    }
+</style>

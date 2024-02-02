@@ -6,140 +6,720 @@
     var mer = DateTime.Now.Month;
     var abc = mer - 1;
 
+    string asd = "KAPATILMIŞTIR";
+
+
 }
+<head>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <style>
 
-<div class="container">
-    <h3><b>YARDIMCI TESİSLER BÖLÜMÜ</b></h3>
-    <h4><b>YARDIMCI TESİSLER MAKİNELERİ</b></h4>
-    <h5><b>YIL :@DateTime.Now.Year</b></h5>
-    <h5><b>AY :@DateTime.Now.Month</b></h5>
-    <h6><b> @abc. ay için giriş yapmaktasınız...</b></h6>
-</div>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+        .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
 
-<div class="container-fluid">
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-            <input type="text" id="Search" placeholder="Ara..." class="form-control" />
 
+
+<body>
+    <div class="container-fluid">
+
+        <div class="portlet-title">
+            <div class="caption">
+
+
+                <div class="container">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">
+
+                                <b>YARDIMCI TESİSLER BÖLÜMÜ</b>
+                            </h3>
+
+                            <h4><b>YARDIMCI TESİSLER MAKİNELERİ</b></h4>
+                            <h5><b>YIL :@DateTime.Now.Year</b></h5>
+                            <h5><b>AY :@DateTime.Now.Month</b></h5>
+
+
+                            @if (abc == 0)
+                            {
+                        <h6><b> @DateTime.Now.AddYears(-1).Year ve @DateTime.Now.AddMonths(-1).Month. ay için giriş yapmaktasınız...</b></h6>
+                                
+                               
+                        }
+                        else
+                        { <h6><b> @abc. ay için giriş yapmaktasınız...</b></h6>}
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
-    </div>
-</div>
-<hr />
+        <hr />
+        <div class="container-fluid">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" id="Search" placeholder="Ara..." class="form-control" />
 
-<table class="table table-bordered">
-    <tr style="background-color: #80471C">
+                </div>
+            </div>
+        </div>
 
-        <th>
-            @Html.DisplayNameFor(model => model.MakineAdi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KWH)
-        </th>
+        <hr />
+        <div class="portlet-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
 
-        <th></th>
-        <th></th>
-    </tr>
+                    <thead class="thead-dark">
+                    <th style="background-color: gray; color:black" colspan="4">KOMPRESÖRLER </th>
+                    </thead>
 
-    @foreach (var item in Model)
-    {
-<tr style="background-color: cornflowerblue" class="Search">
+                    <tr style="background-color: darkseagreen">
 
-    <td>
-        @Html.DisplayFor(modelItem => item.MakineAdi)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.KWH)
-    </td>
+                        <th>
+                            @Html.DisplayName("MAKİNE ADI")
+                        </th>
+                        <th>
+                            @Html.DisplayName("KWH")
+                        </th>
 
-    <td>
-        <table class="table table-bordered table-info">
-            <thead>
-                <tr style="background-color: #80471C">
-                    <th>
-                        YIL
-                    </th>
-                    <th>
-                        AY
-                    </th>
+                        <th colspan="2"></th>
+                    </tr>
 
-                    <th>
-                        ÇALIŞMA SÜRESİ
-                    </th>
-                    <th>
-                        KAYIT EDEN
-                    </th>
+                    @foreach (var item in Model)
+                    {
+                        if (item.YrdTesisMakTipi == "KOMPRESOR")
+                        {
+                <tr style="background-color: lightskyblue" class="Search">
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MakineAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KWH)
+                    </td>
+
+                    <td>
+                        <table class="table table-bordered table-info">
+                            <thead>
+                                <tr style="background-color: darkseagreen">
+                                    <th>
+                                        YIL
+                                    </th>
+                                    <th>
+                                        AY
+                                    </th>
+                                    <th>
+                                        KAYIT EDEN
+                                    </th>
 
 
-                    <th>
-                        KAYIT TARİHİ
-                    </th>
-                    <th>
-                        TOPLAM TÜKETİM
-                    </th>
+                                    <th>
+                                        KAYIT TARİHİ
+                                    </th>
+
+                                    <th>
+                                        SAATLİK TÜKETİM (KWH)
+                                    </th>
+                                    <th>
+                                        m³/dk
+                                    </th>
+                                    <th>
+                                        ÇALIŞMA SÜRESİ
+                                    </th>
+
+                                    <th>
+                                        TOPLAM TÜKETİM
+                                    </th>
+                                    <th>
+                                        TOPLAM HAVA ÜRETİMİ(m³/ay)
+
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var detay in item.MakineCalismaSureleri)
+                                {
+
+                                    var a = detay.BasincKWh * detay.CalismaSuresi;
+                                    var b = detay.M3 * detay.CalismaSuresi * 60;
+                                    if (detay.Ay == ViewBag.ay && detay.Yil == ViewBag.yil)
+                                    {
+                                        <tr class="Search">
+                                            <td>@(detay.Yil)</td>
+                                            <td> @(detay.Ay)</td>
+                                            <td> @(detay.KayitEden)</td>
+
+                                            <td> @Convert.ToDateTime(detay.KayitTarihi).ToString("dd.MM.yyyy")</td>
+
+                                            <td> @(detay.BasincKWh)</td>
+                                            <td> @(detay.M3)</td>
+
+                                            <td>@(detay.CalismaSuresi)</td>
+
+
+
+                                            <td> @(a.GetValueOrDefault())</td>
+                                            <td> @(b.GetValueOrDefault())</td>
+                                            @if (User.IsInRole("YT"))
+                                            {
+                                                <td>
+                                                    <center>
+                                                        <a href="@Url.Action("DetayDuzenle", "MakineCalismaSureleris", new { id = detay.ID })" title="DÜZENLE" class="btn btn-sm btn-primary embed-responsive"> <i class="fa fa-pencil-square" aria-hidden="true">  </i></a>
+                                                    </center>
+                                                </td>
+                                            }
+                                        </tr>
+                                    }
+                                    if (abc == 0 && detay.Ay == DateTime.Now.AddMonths(-1).Month && detay.Yil == DateTime.Now.AddYears(-1).Year)
+                        {
+                            <tr class="Search">
+                                <td>@(detay.Yil)</td>
+                                <td> @(detay.Ay)</td>
+                                <td> @(detay.KayitEden)</td>
+
+                                <td> @Convert.ToDateTime(detay.KayitTarihi).ToString("dd.MM.yyyy")</td>
+
+                                <td> @(detay.BasincKWh)</td>
+                                <td> @(detay.M3)</td>
+
+                                <td>@(detay.CalismaSuresi)</td>
+
+
+
+                                <td> @(a.Value.ToString("N2"))</td>
+                                @*<td> @(b.GetValueOrDefault())</td>*@
+                                <td> @(b.HasValue ? b.Value.ToString("#,##0") : null)</td>
+                                @if (User.IsInRole("YT"))
+                                {
+                                    <td>
+                                        <center>
+                                            <a href="@Url.Action("DetayDuzenle", "MakineCalismaSureleris", new { id = detay.ID })" title="DÜZENLE" class="btn btn-sm btn-primary embed-responsive"> <i class="fa fa-pencil-square" aria-hidden="true">  </i></a>
+                                        </center>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                                }
+
+                            </tbody>
+                        </table>
+                    </td>
+
+                    @if (User.IsInRole("YT"))
+                    {
+                        bool kapali = false;
+                        
+                        foreach (var detays in item.MakineCalismaSureleri)
+                        {
+
+                            if (detays.Ay == ViewBag.ay && detays.Yil == ViewBag.yil && detays.MakineID > 0 && abc != 0)
+                            {
+                                kapali = true;
+                                <td>
+                                    <b>@asd</b>
+                                </td>
+
+                                break;
+                            }
+                            else if (detays.Ay == DateTime.Now.AddMonths(-1).Month && detays.Yil == DateTime.Now.AddYears(-1).Year && detays.MakineID > 0 && abc == 0)
+                            {
+                                kapali = true;
+                                <td>
+                                    <b>@asd</b>
+                                </td>
+
+                                break;
+                            }
+
+
+                            else if (detays.Ay != ViewBag.ay && detays.Yil == ViewBag.yil)
+                            {
+
+                            }
+                        }
+                        
+
+                    if (ViewBag.counter == 1 && kapali == false)
+                    {
+
+                            <td>
+                                <a href="javascript:void(0);" class="anchorDetail btn btn-sm btn-info embed-responsive" id1="@item.ID" title="EKLE"><i class="fa fa-plus-circle">   </i></a>
+
+                            </td>
+
+                        }
+                    }
+
+
+
+
+
+
+
+
+
+
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var detay in item.MakineCalismaSureleri)
-                {
+                        }
 
-                    var a = item.KWH * detay.CalismaSuresi;
-                    <tr class="Search">
-                        <td>@(detay.Yil)</td>
-                        <td> @(detay.Ay)</td>
 
-                        <td>@(detay.CalismaSuresi)</td>
 
-                        <td> @(detay.KayitEden)</td>
+                    }
 
-                        <td> @(detay.KayitTarihi)</td>
+                </table>
 
-                        <td> @(a)</td>
+                <hr />
+                <table class="table table-bordered">
 
+                    <thead class="thead-dark">
+                    <th style="background-color: gray; color:black" colspan="4">KULELER </th>
+                    </thead>
+
+                    <tr style="background-color: darkseagreen">
+
+                        <th>
+                            @Html.DisplayName("MAKİNE ADI")
+                        </th>
+                        <th>
+                            @Html.DisplayName("KWH")
+                        </th>
+
+                        <th colspan="2"></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.YrdTesisMakTipi == "KULE")
+                        {
+                            <tr style="background-color: lightskyblue" class="Search">
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MakineAdi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KWH)
+                                </td>
+
+                                <td>
+                                    <table class="table table-bordered table-info">
+                                        <thead>
+                                            <tr style="background-color: darkseagreen">
+                                                <th>
+                                                    YIL
+                                                </th>
+                                                <th>
+                                                    AY
+                                                </th>
+
+                                                <th>
+                                                    ÇALIŞMA SÜRESİ
+                                                </th>
+                                                <th>
+                                                    KAYIT EDEN
+                                                </th>
+
+
+                                                <th>
+                                                    KAYIT TARİHİ
+                                                </th>
+                                                <th>
+                                                    TOPLAM TÜKETİM
+                                                </th>
+
+                                              
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var detay in item.MakineCalismaSureleri)
+                                            {
+
+                                                var a = item.KWH * detay.CalismaSuresi;
+                                                decimal? sum = 0;
+                                                sum +=a;
+                                                if (detay.Ay == ViewBag.ay && detay.Yil == ViewBag.yil)
+                                                {
+                                            <tr class="Search">
+                                                <td>@(detay.Yil)</td>
+                                                <td> @(detay.Ay)</td>
+
+                                                <td>@(detay.CalismaSuresi)</td>
+
+                                                <td> @(detay.KayitEden)</td>
+
+                                                <td>        @Convert.ToDateTime(detay.KayitTarihi).ToString("dd.MM.yyyy")</td>
+
+                                                <td> @(a.Value.ToString("N2"))</td>
+
+
+                                                @if (User.IsInRole("YT"))
+                                                {
+                                                    <td>
+                                                        <center>
+                                                            <a href="@Url.Action("DetayDuzenle", "MakineCalismaSureleris", new { id = detay.ID })" title="DÜZENLE" class="btn btn-sm btn-primary embed-responsive"> <i class="fa fa-pencil-square" aria-hidden="true">  </i></a>
+                                                        </center>
+                                                    </td>
+                                                }
+
+                                                <td>
+                                                    <a href="javascript:void(0);" class="anchorDetail btn btn-sm btn-info embed-responsive" id1="@item.ID" title="EKLE"><i class="fa fa-plus-circle">   </i></a>
+
+                                                </td>
+                                            </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                                @if (User.IsInRole("YT"))
+                                {
+                                    bool kapali = false;
+
+                                    foreach (var detays in item.MakineCalismaSureleri)
+                                    {
+
+                                        if (detays.Ay == ViewBag.ay && detays.Yil == ViewBag.yil && detays.MakineID > 0)
+                                        {
+                                            kapali = true;
+                                            <td>
+                                                <b>@asd</b>
+                                            </td>
+
+                                            break;
+                                        }
+
+
+
+                                        else if (detays.Ay != ViewBag.ay && detays.Yil == ViewBag.yil)
+                                        {
+
+                                        }
+                                    }
+
+
+                                    if (ViewBag.counter == 1 && kapali == false)
+                                    {
+
+
+                                    }
+                                }
+
+
+                            </tr>
+                        }
+
+
+
+                    }
+               
+                     
+                                 
+                  
+                    </table>
+                <hr />
+                <table class="table table-bordered">
+
+                    <thead class="thead-dark">
+                    <th style="background-color: gray; color:black" colspan="4">KURUTUCULAR </th>
+                    </thead>
+
+                    <tr style="background-color: darkseagreen">
+
+                        <th>
+                            @Html.DisplayName("MAKİNE ADI")
+                        </th>
+                        <th>
+                            @Html.DisplayName("KWH")
+                        </th>
+
+                        <th colspan="2"></th>
 
                     </tr>
-                }
 
-            </tbody>
-        </table>
-    </td>
-    @if (User.IsInRole("YT"))
-    {
-        foreach (var detays in item.MakineCalismaSureleri)
-        {
+                    @foreach (var item in Model)
+                    {
+                        if (item.YrdTesisMakTipi == "KURUTUCU")
+                        {
+                            <tr style="background-color: lightskyblue" class="Search">
 
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MakineAdi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KWH)
+                                </td>
 
-            if (detays.MakineID != 0)
-            {
+                                <td>
+                                    <table class="table table-bordered table-info">
+                                        <thead>
+                                            <tr style="background-color: darkseagreen">
+                                                <th>
+                                                    YIL
+                                                </th>
+                                                <th>
+                                                    AY
+                                                </th>
 
-                <td>
-                    <b>KAPATILMIŞTIR</b>
-                </td>
-
-            }
-
-
-        }
-
-        if (item.MakineCalismaSureleri.Count == 0)
-        {
-            <td>
-                @Html.ActionLink("EKLE", "Edit", new { id1 = item.ID })
-
-            </td>
-        }
-
-
-    }
+                                                <th>
+                                                    ÇALIŞMA SÜRESİ
+                                                </th>
+                                                <th>
+                                                    KAYIT EDEN
+                                                </th>
 
 
-    </tr>
-    }
+                                                <th>
+                                                    KAYIT TARİHİ
+                                                </th>
+                                                <th>
+                                                    TOPLAM TÜKETİM
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var detay in item.MakineCalismaSureleri)
+                                            {
+
+                                                var a = item.KWH * detay.CalismaSuresi;
+                                                if (detay.Ay == ViewBag.ay && detay.Yil == ViewBag.yil)
+                                                {
+                                                    <tr class="Search">
+                                                        <td>@(detay.Yil)</td>
+                                                        <td> @(detay.Ay)</td>
+
+                                                        <td>@(detay.CalismaSuresi)</td>
+
+                                                        <td> @(detay.KayitEden)</td>
+
+                                                        <td>        @Convert.ToDateTime(detay.KayitTarihi).ToString("dd.MM.yyyy")</td>
+
+                                                        <td> @(a.Value.ToString("N2"))</td>
+
+                                                        @if (User.IsInRole("YT"))
+                                                        {
+                                                            <td>
+                                                                <center>
+                                                                    <a href="@Url.Action("DetayDuzenle", "MakineCalismaSureleris", new { id = detay.ID })" title="DÜZENLE" class="btn btn-sm btn-primary embed-responsive"> <i class="fa fa-pencil-square" aria-hidden="true">  </i></a>
+                                                                </center>
+                                                            </td>
+                                                        }
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                                @if (User.IsInRole("YT"))
+                                {
+                                    bool kapali = false;
+
+                                    foreach (var detays in item.MakineCalismaSureleri)
+                                    {
+
+                                        if (detays.Ay == ViewBag.ay && detays.Yil == ViewBag.yil && detays.MakineID > 0)
+                                        {
+                                            kapali = true;
+                                            <td>
+                                                <b>@asd</b>
+                                            </td>
+
+                                            break;
+                                        }
 
 
-</table>
+
+                                        else if (detays.Ay != ViewBag.ay && detays.Yil == ViewBag.yil)
+                                        {
+
+                                        }
+                                    }
+
+
+                                    if (ViewBag.counter == 1 && kapali == false)
+                                    {
+
+                                        <td>
+                                            <a href="javascript:void(0);" class="anchorDetail btn btn-sm btn-info embed-responsive" id1="@item.ID" title="EKLE"><i class="fa fa-plus-circle">   </i></a>
+
+                                        </td>
+
+                                    }
+                                }
+
+
+                            </tr>
+                        }
+
+
+
+                    }
+
+                </table>
+                <hr />
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                    <th style="background-color: gray; color:black" colspan="4">SOĞUTMA MAKİNELERİ     TOPLAM: @Model.Sum(item => item.KWH).Value.ToString("N2")</th>
+               
+                  
+                        </thead>
+                        <tr style="background-color: darkseagreen">
+
+                            <th>
+                                @Html.DisplayName("MAKİNE ADI")
+                            </th>
+                            <th>
+                                @Html.DisplayName("KWH")
+                            </th>
+
+                            <th colspan="2"></th>
+
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.YrdTesisMakTipi == "SOGUTMA")
+                            {
+                                <tr style="background-color: lightskyblue" class="Search">
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MakineAdi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.KWH)
+                                    </td>
+
+                                    <td>
+                                        <table class="table table-bordered table-info">
+
+                                            <tr style="background-color: darkseagreen">
+                                                <th>
+                                                    YIL
+                                                </th>
+                                                <th>
+                                                    AY
+                                                </th>
+
+                                                <th>
+                                                    ÇALIŞMA SÜRESİ
+                                                </th>
+                                                <th>
+                                                    KAYIT EDEN
+                                                </th>
+
+
+                                                <th>
+                                                    KAYIT TARİHİ
+                                                </th>
+                                                <th>
+                                                    TOPLAM TÜKETİM
+                                                </th>
+                                                @if (User.IsInRole("YT"))
+                                                {
+                                                    <th></th>
+                                                }
+                                            </tr>
+
+                                            <tbody>
+                                                @foreach (var detay in item.MakineCalismaSureleri)
+                                                {
+
+                                                    var a = item.KWH * detay.CalismaSuresi;
+                                                    if (detay.Ay == ViewBag.ay && detay.Yil == ViewBag.yil)
+                                                    {
+                                                        <tr class="Search">
+                                                            <td>@(detay.Yil)</td>
+                                                            <td> @(detay.Ay)</td>
+
+                                                            <td>@(detay.CalismaSuresi)</td>
+
+                                                            <td> @(detay.KayitEden)</td>
+
+                                                            <td>        @Convert.ToDateTime(detay.KayitTarihi).ToString("dd.MM.yyyy")</td>
+
+                                                            <td> @(a.Value.ToString("N2"))</td>
+
+                                                            @if (User.IsInRole("YT"))
+                                                            {
+                                                                <td>
+                                                                    <center>
+                                                                        <a href="@Url.Action("DetayDuzenle", "MakineCalismaSureleris", new { id = detay.ID })" title="DÜZENLE" class="btn btn-sm btn-primary embed-responsive"> <i class="fa fa-pencil-square" aria-hidden="true">  </i></a>
+                                                                    </center>
+                                                                </td>
+                                                            }
+                                                        </tr>
+                                                       
+                                                    }
+
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    @if (User.IsInRole("YT"))
+                                    {
+                                        bool kapali = false;
+
+                                        foreach (var detays in item.MakineCalismaSureleri)
+                                        {
+
+                                            if (detays.Ay == ViewBag.ay && detays.Yil == ViewBag.yil && detays.MakineID > 0)
+                                            {
+                                                kapali = true;
+                                                <td>
+                                                    <b>@asd</b>
+                                                </td>
+
+                                                break;
+                                            }
+
+
+
+                                            else if (detays.Ay != ViewBag.ay && detays.Yil == ViewBag.yil)
+                                            {
+
+                                            }
+                                        }
+
+
+                                        if (ViewBag.counter == 1 && kapali == false)
+                                        {
+
+
+                                            <td>
+                                                <button onclick="javascript:void(0);" id1="@item.ID" class="anchorDetail btn btn-sm btn-info embed-responsive" data-toggle="modal" data-target="#myModal" title="EKLE">
+                                                    <i class="fa fa-plus-circle">   </i>
+                                                </button>
+                                            </td>
+
+
+                                        }
+                                    }
+
+
+                                </tr>
+                            }
+
+
+
+                        }
+
+                    </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+
 <script>
     //LIVE SEARCH
     $(document).ready(function () {
@@ -159,4 +739,59 @@
             })
         });
     });
+</script>
+<div id="myModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <CENTER> <h4><b></b></h4></CENTER>
+
+                <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+            </div>
+            <div id="myModalContent"></div>
+            <div class="modal-footer">
+                <div style="float:right">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Kapat</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    var TeamDetailPostBackURL = '/MakineCalismaSureleris/Edit';
+    $(function () {
+        $(".anchorDetail").click(function () {
+            debugger;
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('id1');
+            var options = { "backdrop": "static", keyboard: true };
+            $.ajax({
+                type: "GET",
+                url: TeamDetailPostBackURL,
+                contentType: "application/json; charset=utf-8",
+                data: { "id1": id },
+                datatype: "json",
+                success: function (data) {
+                    debugger;
+                    $('#myModalContent').html(data);
+                    $('#myModal').modal(options);
+                    $('#myModal').modal('show');
+
+                },
+                error: function () {
+                    alert("HATA OLUŞTU.");
+                }
+            });
+        });
+
+    });
+
+
+
 </script>
