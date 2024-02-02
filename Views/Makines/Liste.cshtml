@@ -1,0 +1,149 @@
+﻿@model IEnumerable<PolyteksEnerjiYonetimSistemi.Models.MakineCalismaSureleri>
+
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="container">
+    <h3>
+
+   
+
+        <b>KAYIT LİSTESİ</b>
+        @using (Html.BeginForm("Makineler", "Makines", FormMethod.Post))
+        {
+            <input type="submit" value="EXCEL İNDİR" class="btn btn-danger" />
+        }
+
+    </h3>
+    <style>
+        h3 {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+
+    <br />
+    <div class="container-fluid">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" id="Search" placeholder="Ara..." class="form-control" />
+
+            </div>
+        </div>
+    </div>
+    <hr />
+    <table class="table table-bordered table-primary table-responsive-sm">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Yil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bolumler.Bolum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Makine.MakineNo)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.KayitEden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KayitTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalismaSuresi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToplamTuketimKwh)
+            </th>
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            var yttoplam = item.BasincKWh * item.CalismaSuresi;
+            var toplam = item.Makine.KWH * item.CalismaSuresi;
+    <tr class="Search">
+        <td>
+            @Html.DisplayFor(modelItem => item.Yil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Makine.Bolumler.Bolum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Makine.MakineNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KayitEden)
+        </td>
+        <td>
+            @Convert.ToDateTime(item.KayitTarihi).ToString("dd.MM.yyyy")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CalismaSuresi)
+        </td>
+
+        @if (item.Bolumler.ID == 5 || item.Bolumler.ID == 12 || item.Bolumler.ID == 13)
+        {
+            <td>
+                @*@(toplam.Value.ToString("N2"))<br />*@
+                @String.Format("{0:n3}", yttoplam)
+            </td>
+        }
+
+        @if (item.Bolumler.ID == 1 || item.Bolumler.ID == 2 || item.Bolumler.ID == 3)
+        {
+            <td>
+                @*@(toplam.Value.ToString("N2"))<br />*@
+                @String.Format("{0:n3}", toplam)
+            </td>
+        }
+    </tr>
+
+        }
+
+    </table>
+    </div>
+    <b>TOPLAM VERİ GİRİŞ SAYISI : @Model.Count()</b>
+
+    <hr />
+
+
+    @*<b>TOPLAM ENERJİ TÜKETİMİ : @ViewBag.toplam.ToString("N2")</b>*@
+
+
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script>
+        //LIVE SEARCH
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val().toLowerCase();
+                $(".Search").each(function () {
+                    if (!Contains($(this).text().toLowerCase(), searchText)) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                })
+            });
+        });
+    </script>

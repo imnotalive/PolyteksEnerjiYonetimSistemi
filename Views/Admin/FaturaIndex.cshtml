@@ -1,0 +1,162 @@
+﻿@model IEnumerable<PolyteksEnerjiYonetimSistemi.Models.FaturaBilgileri>
+
+@{
+    ViewBag.Title = "FaturaIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<h4>
+
+
+
+    <b>FATURA KAYIT LİSTESİ</b>
+    <br />
+    @using (Html.BeginForm("FaturaExcel", "Admin", FormMethod.Post))
+    {
+        <input type="submit" value="EXCEL İNDİR" class="btn btn-danger btn-sm" />
+    }
+
+</h4>
+<style>
+    h3 {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<br />
+<div class="container-fluid">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Ara..." class="form-control" />
+
+        </div>
+    </div>
+</div>
+
+<p>
+    <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">YENİ FATURA EKLE</button>
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayName("YIL")
+        </th>
+        <th>
+            @Html.DisplayName("AY")
+        </th>
+        <th>
+            @Html.DisplayName("MİKTAR")
+        </th>
+        <th>
+            @Html.DisplayName("FATURA YERİ")
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr class="Search">
+    <td>
+        @Html.DisplayFor(modelItem => item.YIL)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AY)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Miktar)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FaturaYeri.FaturaYeri1)
+    </td>
+    <td>
+        <center>
+            <a href="@Url.Action("FaturaEdit", "Admin", new { id = item.ID })" title="DÜZENLE" class="btn btn-primary py-0"> <i class="fa fa-pencil-square-o" aria-hidden="true">  </i></a>
+        </center>
+
+    </td>
+    <td>
+        <center>
+            <a href="@Url.Action("FaturaDelete", "Admin", new { id = item.ID })" title="SİL" class="btn btn-danger py-0"> <i class="fa fa-trash-o" aria-hidden="true">  </i></a>
+        </center>
+
+    </td>
+</tr>
+    }
+
+</table>
+@using (Html.BeginForm("FaturaCreate", "Admin", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="modal" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                    </div>
+                    <div class="modal-body">
+                        <CENTER><h4><b>YENİ FATURA EKLEME</b></h4></CENTER>
+
+
+                        <div id="result1"></div>
+                        <script type="text/javascript">
+
+                            $(document).ready(function () {
+
+                                $('#result1').load('/Admin/FaturaCreate');
+
+                            });
+
+
+                        </script>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+
+                            <div style="float:right">
+                                <button class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                            </div>
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<script>
+    //LIVE SEARCH
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            })
+        });
+    });
+</script>
+

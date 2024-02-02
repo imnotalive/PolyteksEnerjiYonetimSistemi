@@ -8,31 +8,40 @@ using System.Web.Security;
 
 namespace PolyteksEnerjiYonetimSistemi.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        POLY_ENERJIEntities db = new POLY_ENERJIEntities();
+        POLY_ENERJI db = new POLY_ENERJI();
         public ActionResult Index()
         {
             return View();
         }
-     
-  
-        [AllowAnonymous]
-        public ActionResult Giris()
+        private ActionResult RedirectToLocal(string returnUrl)
         {
-
-            return View();
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Giris", "Home");
         }
 
+
+        [AllowAnonymous]
+        public ActionResult Giris(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+  
         [AllowAnonymous]
         [HttpPost]
-
-        public ActionResult Giris(Kullanicilar kullanici)
+        [ValidateAntiForgeryToken]
+        public ActionResult Giris(Kullanicilar kullanici, string returnUrl)
         {
 
 
             var teyit = db.Kullanicilar.FirstOrDefault(a => a.KullaniciKodu == kullanici.KullaniciKodu && a.Sifre == kullanici.Sifre);
-            if (teyit != null)
+            if (ModelState.IsValid && teyit != null)
             {
                 FormsAuthentication.SetAuthCookie(teyit.AdiSoyadi, false);
                 return RedirectToAction("Index", "Home");
@@ -46,18 +55,30 @@ namespace PolyteksEnerjiYonetimSistemi.Controllers
 
 
         }
+        [HttpPost]
+        public JsonResult KeepSessionAlive()
+        {
+
+            return new JsonResult
+            {
+                Data = "Beat Generated"
+            };
+        }
+
         [AllowAnonymous]
         public ActionResult Cikis()
         {
 
            
             FormsAuthentication.SignOut();
+            HttpContext.Session.Clear();
+            return RedirectToAction("Giris", "Home");
 
-            return View("Giris");
+           
         }
         public ActionResult Create()
         {
-            ViewBag.id_modelos = new SelectList(db.Makine, "ID", "MakineAdi");
+            ViewBag.Makine = new SelectList(db.Makine, "ID", "MakineAdi");
             return View();
         }
 
@@ -73,7 +94,7 @@ namespace PolyteksEnerjiYonetimSistemi.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id_modelos = new SelectList(db.Makine, "id_modelos", "modelo1", repuesto.MakineAdi);
+            ViewBag.Makine = new SelectList(db.Makine, "id_model", "model", repuesto.MakineAdi);
             return View(repuesto);
         }
         public JsonResult GetResults(int? id)

@@ -1,0 +1,696 @@
+﻿@model IEnumerable<PolyteksEnerjiYonetimSistemi.Models.Makine>
+
+@{
+    ViewBag.Title = "EnerjiGozdenGecirme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-body" style="background-color:cadetblue">
+        <center><h2 style="color:black">BÜKÜM @DateTime.Now.AddYears(-1).Year YILI RAPORU</h2></center>
+
+        <div class="container">
+            <div class="container">
+                <div class="card-body">
+                    <table class="table table-bordered">
+
+
+                        <tr style="background-color: darkseagreen">
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.MakineAdi)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.KWH)
+                            </th>
+
+                            <th></th>
+
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.Bolumler.ID == 3)
+                            {
+                                <tr style="background-color: lightskyblue" class="Search">
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MakineAdi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.KWH)
+                                    </td>
+
+                                    <td>
+                                        <table class="table table-bordered table-info">
+                                            <thead>
+                                                <tr style="background-color: darkseagreen">
+                                                    <th>
+                                                        YIL
+                                                    </th>
+
+                                                    <th>
+                                                        AY
+                                                    </th>
+
+
+                                                   
+                                                    <th>
+                                                        ÇALIŞMA SÜRESİ
+                                                    </th>
+
+                                                    <th>
+                                                        TOPLAM TÜKETİM
+                                                    </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var detay in item.MakineCalismaSureleri)
+                                                {
+                                                    if (detay.Yil == DateTime.Now.Year - 1)
+                                                    {
+                                                        var a = item.KWH * detay.CalismaSuresi;
+                                                        
+                                                        <tr class="Search">
+                                                            <td>@(detay.Yil)</td>
+                                                            <td>@(detay.Ay)</td>
+
+
+                                                            
+                                                            <td>@(detay.CalismaSuresi)</td>
+
+
+
+
+
+                                                            <td> @(a.GetValueOrDefault())</td>
+
+
+                                                        </tr>
+                                                    }
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+
+
+                                </tr>
+                            }
+                        }
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body" style="background-color:cadetblue">
+        <center><h2 style="color:black">TEKSTÜRE @DateTime.Now.AddYears(-1).Year YILI RAPORU</h2></center>
+
+        <div class="container">
+            <div class="card-body">
+                <table class="table table-bordered">
+
+
+                    <tr style="background-color: darkseagreen">
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.MakineAdi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.KWH)
+                        </th>
+
+                        <th></th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.Bolumler.ID == 1)
+                        {
+                            <tr style="background-color: lightskyblue" class="Search">
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MakineAdi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KWH)
+                                </td>
+
+                                <td>
+                                    <table class="table table-bordered table-info">
+                                        <thead>
+                                            <tr style="background-color: darkseagreen">
+                                                <th>
+                                                    YIL
+                                                </th>
+
+                                                <th>
+                                                    AY
+                                                </th>
+
+
+                                              
+                                                <th>
+                                                    ÇALIŞMA SÜRESİ
+                                                </th>
+
+                                                <th>
+                                                    TOPLAM TÜKETİM
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var detay in item.MakineCalismaSureleri)
+                                            {
+                                                if (detay.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    var a = item.KWH * detay.CalismaSuresi;
+                                            <tr class="Search">
+                                                <td>@(detay.Yil)</td>
+                                                <td>@(detay.Ay)</td>
+
+
+                                                
+                                                <td>@(detay.CalismaSuresi)</td>
+
+
+
+
+
+                                                <td> @(a.GetValueOrDefault())</td>
+
+
+                                            </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </td>
+
+
+                            </tr>
+                        }
+                    }
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body" style="background-color:cadetblue">
+        <center><h2 style="color:black">ÜRETİM @DateTime.Now.AddYears(-1).Year YILI RAPORU</h2></center>
+
+        <div class="container">
+            <div class="card-body">
+                <table class="table table-bordered">
+
+
+                    <tr style="background-color: darkseagreen">
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.MakineAdi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.KWH)
+                        </th>
+
+                        <th></th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.Bolumler.ID == 2)
+                        {
+                            <thead class="thead-dark">
+                            <th style="background-color: gray; color:black" colspan="4">POY </th>
+                            </thead>
+                            <tr style="background-color: lightskyblue" class="Search">
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MakineAdi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KWH)
+                                </td>
+
+                                <td>
+                                    <table class="table table-bordered table-info">
+
+
+                                        <tr style="background-color: darkseagreen">
+                                            <th>
+                                                YIL
+                                            </th>
+
+                                            <th>
+                                                AY
+                                            </th>
+
+
+                                            <th>
+                                                BASINÇ (KWH)
+                                            </th>
+                                            <th>
+                                                ÇALIŞMA SÜRESİ
+                                            </th>
+
+                                            <th>
+                                                TOPLAM TÜKETİM
+                                            </th>
+
+                                        </tr>
+
+                                        <tbody>
+                                            @foreach (var detay in item.MakineCalismaSureleri)
+                                            {
+                                                if (detay.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    var a = item.KWH * detay.CalismaSuresi;
+                                                    <tr class="Search">
+                                                        <td>@(detay.Yil)</td>
+                                                        <td>@(detay.Ay)</td>
+
+
+                                                        <td>@(detay.BasincKWh)</td>
+                                                        <td>@(detay.CalismaSuresi)</td>
+
+
+
+
+
+                                                        <td> @(a.GetValueOrDefault())</td>
+
+
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+
+
+                                </td>
+
+
+                            </tr>
+                        }
+                        if (item.Bolumler.ID == 11)
+                        {
+                            <thead class="thead-dark">
+                            <th style="background-color: gray; color:black" colspan="4">FDY </th>
+                            </thead>
+                            <tr style="background-color: lightskyblue" class="Search">
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MakineAdi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KWH)
+                                </td>
+
+                                <td>
+                                    <table class="table table-bordered table-info">
+                                        <thead>
+                                            <tr style="background-color: darkseagreen">
+                                                <th>
+                                                    YIL
+                                                </th>
+
+                                                <th>
+                                                    AY
+                                                </th>
+
+
+                                                <th>
+                                                    BASINÇ (KWH)
+                                                </th>
+                                                <th>
+                                                    ÇALIŞMA SÜRESİ
+                                                </th>
+
+                                                <th>
+                                                    TOPLAM TÜKETİM
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var detay in item.MakineCalismaSureleri)
+                                            {
+                                                if (detay.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    var a = item.KWH * detay.CalismaSuresi;
+                                                    <tr class="Search">
+                                                        <td>@(detay.Yil)</td>
+                                                        <td>@(detay.Ay)</td>
+
+
+                                                        <td>@(detay.BasincKWh)</td>
+                                                        <td>@(detay.CalismaSuresi)</td>
+
+
+
+
+
+                                                        <td> @(a.GetValueOrDefault())</td>
+
+
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+
+
+                                </td>
+
+
+                            </tr>
+                        }
+                    }
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body" style="background-color:cadetblue">
+        <center><h2 style="color:black">YARDIMCI TESİSLER @DateTime.Now.AddYears(-1).Year YILI RAPORU</h2></center>
+
+        <div class="container">
+            <div class="card-body">
+                <table class="table table-bordered">
+
+
+                    <tr style="background-color: darkseagreen">
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.MakineAdi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.KWH)
+                        </th>
+
+                        <th></th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {if (item.Bolumler.ID == 5|| item.Bolumler.ID == 12 || item.Bolumler.ID == 13)
+                        {
+                        <tr style="background-color: lightskyblue" class="Search">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MakineAdi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.KWH)
+                            </td>
+
+                            <td>
+                                <table class="table table-bordered table-info">
+                                    <thead>
+                                        <tr style="background-color: darkseagreen">
+                                            <th>
+                                                YIL
+                                            </th>
+                                            <th>
+                                                AY
+                                            </th>
+                                          
+                                            <th>
+                                                SAATLİK TÜKETİM (KWH)
+                                            </th>
+                                            <th>
+                                                m³/dk
+                                            </th>
+                                            <th>
+                                                ÇALIŞMA SÜRESİ
+                                            </th>
+
+                                            <th>
+                                                TOPLAM TÜKETİM
+                                            </th>
+                                            <th>
+                                                TOPLAM HAVA ÜRETİMİ(m³/ay)
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var detay in item.MakineCalismaSureleri)
+                                        {
+                                            if (detay.Yil == DateTime.Now.Year - 1)
+                                            {
+                                                var a = detay.BasincKWh * detay.CalismaSuresi;
+                                                var b = detay.M3 * detay.CalismaSuresi * 60;
+                                              
+                                                    <tr class="Search">
+                                                        <td>@(detay.Yil)</td>
+                                                        <td> @(detay.Ay)</td>
+                                                     
+
+                                                        <td> @(detay.BasincKWh)</td>
+                                                        <td> @(detay.M3)</td>
+
+                                                        <td>@(detay.CalismaSuresi)</td>
+
+
+
+                                                        <td> @(a.GetValueOrDefault())</td>
+                                                        <td> @(b.GetValueOrDefault())</td>
+                                                    </tr>
+                                                
+                                            }
+                                        }
+                                        </tbody>
+                                </table>
+                            </td>
+
+                            
+                        </tr>
+                        }
+                    }
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body" style="background-color:cadetblue">
+        <center><h2 style="color:black">TEKNİK TEKSTİL @DateTime.Now.AddYears(-1).Year YILI RAPORU</h2></center>
+
+        <div class="container">
+            <div class="card-body">
+                <table class="table table-bordered">
+
+
+                    <tr style="background-color: darkseagreen">
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.MakineAdi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.KWH)
+                        </th>
+
+                        <th></th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.Bolumler.ID == 4)
+                        {
+                            <tr style="background-color: lightskyblue" class="Search">
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MakineAdi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KWH)
+                                </td>
+
+                                <td>
+                                    <table class="table table-bordered table-info">
+                                        <thead>
+                                            <tr style="background-color: darkseagreen">
+                                                <th>
+                                                    YIL
+                                                </th>
+
+                                                <th>
+                                                    AY
+                                                </th>
+
+
+
+
+                                                <th>
+                                                    ÇALIŞMA SÜRESİ
+                                                </th>
+
+                                                <th>
+                                                    TOPLAM TÜKETİM
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var detay in item.MakineCalismaSureleri)
+                                            {
+                                                if (detay.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    var a = item.KWH * detay.CalismaSuresi;
+                                                    <tr class="Search">
+                                                        <td>@(detay.Yil)</td>
+                                                        <td>@(detay.Ay)</td>
+
+
+
+                                                        <td>@(detay.CalismaSuresi)</td>
+
+
+
+
+
+                                                        <td> @(a.GetValueOrDefault())</td>
+
+
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </td>
+
+
+                            </tr>
+                        }
+                    }
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body" style="background-color:cadetblue">
+        <center><h2 style="color:black">DİĞER @DateTime.Now.AddYears(-1).Year YILI RAPORU</h2></center>
+
+        <div class="container">
+            <div class="card-body">
+                <table class="table table-bordered">
+
+
+                    <tr style="background-color: darkseagreen">
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.MakineAdi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.KWH)
+                        </th>
+
+                        <th></th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.Bolumler.ID == 6)
+                        {
+                            <tr style="background-color: lightskyblue" class="Search">
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MakineAdi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KWH)
+                                </td>
+
+                                <td>
+                                    <table class="table table-bordered table-info">
+                                        <thead>
+                                            <tr style="background-color: darkseagreen">
+                                                <th>
+                                                    YIL
+                                                </th>
+
+                                                <th>
+                                                    AY
+                                                </th>
+
+
+
+
+
+                                                <th>
+                                                    ÇALIŞMA SÜRESİ
+                                                </th>
+
+                                                <th>
+                                                    TOPLAM TÜKETİM
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var detay in item.MakineCalismaSureleri)
+                                            {
+                                                if (detay.Yil == DateTime.Now.Year - 1)
+                                                {
+                                                    var a = item.KWH * detay.CalismaSuresi;
+                                                    <tr class="Search">
+                                                        <td>@(detay.Yil)</td>
+                                                        <td>@(detay.Ay)</td>
+
+
+
+                                                        <td>@(detay.CalismaSuresi)</td>
+
+
+
+
+
+                                                        <td> @(a.GetValueOrDefault())</td>
+
+
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </td>
+
+
+                            </tr>
+                        }
+                    }
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

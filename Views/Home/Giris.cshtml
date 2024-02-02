@@ -25,58 +25,59 @@
 </head>
 <body>
 
-    @using (Html.BeginForm("Giris", "Home", FormMethod.Post, new { @class = "box" }))
+    @using (Html.BeginForm("Giris", "Home", FormMethod.Post, new { @class = "box", ReturnUrl = ViewBag.ReturnUrl }))
     {
-        <div class="container">
-            <div class="d-flex justify-content-center h-100">
-                <div class="card">
-                    <div class="card-header">
-                        <center> <h3><b>POLYTEKS</b></h3></center>
-                        <center> <h5 style="color:whitesmoke">ISO 50001</h5></center>
-                        <div class="d-flex justify-content-end social_icon">
-                            @*<span><i class="fab fa-facebook-square"></i></span>
-                <span><i class="fab fa-google-plus-square"></i></span>
-                <span><i class="fab fa-twitter-square"></i></span>*@
-                        </div>
+        @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <center> <h3><b>POLYTEKS</b></h3></center>
+                    <center> <h5 style="color:whitesmoke">ISO 50001</h5></center>
+                    <div class="d-flex justify-content-end social_icon">
+                        @*<span><i class="fab fa-facebook-square"></i></span>
+                            <span><i class="fab fa-google-plus-square"></i></span>
+                            <span><i class="fab fa-twitter-square"></i></span>*@
                     </div>
-                    <div style="color:red"><center> <b>@ViewBag.mesaj  </b></center></div>
-                    <div class="card-body">
-                        <form>
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
+                </div>
+                <div style="color:red"><center> <b>@ViewBag.mesaj  </b></center></div>
+                <div class="card-body">
+                    <form>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
 
-                                @Html.TextBoxFor(m => m.KullaniciKodu, new { @class = "form-control upper", placeholder = "KULLANICI ADI" })
+                            @Html.TextBoxFor(m => m.KullaniciKodu, new { @class = "form-control upper", placeholder = "KULLANICI ADI" })
 
 
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                </div>
-                                @Html.EditorFor(m => m.Sifre, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "ŞİFRE", } })
-                            </div>
-                            <div class="row align-items-center remember">
-                                @*<input type="checkbox">Remember Me*@
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="GİRİŞ YAP" class="btn float-right login_btn">
-                            </div>
-                        </form>
+                           @Html.EditorFor(m => m.Sifre, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "ŞİFRE", } })
+                        </div>
+                        <div class="row align-items-center remember">
+                            @*<input type="checkbox">Remember Me*@
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="GİRİŞ YAP" class="btn float-right login_btn">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        @*Don't have an account?<a href="#">Sign Up</a>*@
                     </div>
-                    <div class="card-footer">
-                        <div class="d-flex justify-content-center links">
-                            @*Don't have an account?<a href="#">Sign Up</a>*@
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            @*<a href="#">Forgot your password?</a>*@
-                        </div>
+                    <div class="d-flex justify-content-center">
+                        @*<a href="#">Forgot your password?</a>*@
                     </div>
                 </div>
             </div>
         </div>
-    }
+    </div>
+}
     <style>
         @@import url('https://fonts.googleapis.com/css?family=Numans');
 
@@ -109,7 +110,7 @@
 
         .input-group-prepend span {
             width: 50px;
-            background-color: #FFC312;
+            background-color: dodgerblue;
             color: black;
             border: 0 !important;
         }
@@ -119,20 +120,11 @@
             box-shadow: 0 0 0 0 !important;
         }
 
-        .remember {
-            color: white;
-        }
-
-            .remember input {
-                width: 20px;
-                height: 20px;
-                margin-left: 15px;
-                margin-right: 5px;
-            }
-
         .login_btn {
             color: black;
-            background-color: #FFC312;
+            background-color: dodgerblue;
+            font-weight: bold;
+        font-family:Calibri;
             width: 100px;
         }
 

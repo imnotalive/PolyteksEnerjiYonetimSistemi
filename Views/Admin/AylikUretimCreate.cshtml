@@ -1,0 +1,74 @@
+﻿@model PolyteksEnerjiYonetimSistemi.Models.AylikUretimVerileri
+
+@{
+    ViewBag.Title = "AylikUretimCreate";
+    Layout = null;
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="container">
+
+
+
+        <div class="card">
+            <div class="card-header" style="background-color:grey">
+                <h4 style="color:black">YENİ AYLIK ÜRETİM VERİSİ EKLEME</h4>
+            </div>
+            <div class="card-body" style="background-color:lightsteelblue">
+
+                <div class="row">
+                    <div class="col-sm-4">
+
+
+                        @Html.LabelFor(model => model.BolumID, "BÖLÜM", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                        @Html.DropDownList("BolumID", null, "SEÇİNİZ", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BolumID, "", new { @class = "text-danger" })
+                    </div>
+
+
+                    <div class="col-sm-4">
+                        @Html.LabelFor(model => model.Yil, "YIL", htmlAttributes: new { @class = "control-label col-md-12" })
+
+                        @Html.EditorFor(model => model.Yil, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Yil, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        @Html.LabelFor(model => model.Ay, "AY", htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Ay, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Ay, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                       
+                            @Html.LabelFor(model => model.AylikMiktar, "AYLIK ÜRETİM MİKTARI", htmlAttributes: new { @class = "control-label col-md-12" })
+                           
+                                @Html.EditorFor(model => model.AylikMiktar, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.AylikMiktar, "", new { @class = "text-danger" })
+                       
+                        </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group">
+                            <div class="col-md-offset-12 col-md-12">
+                                <input type="submit" value="EKLE" class="btn btn-success" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                }
+
+

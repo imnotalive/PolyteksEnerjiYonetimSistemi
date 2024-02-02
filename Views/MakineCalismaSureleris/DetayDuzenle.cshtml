@@ -1,0 +1,57 @@
+﻿@model PolyteksEnerjiYonetimSistemi.Models.MakineCalismaSureleri
+
+@{
+    ViewBag.Title = "DetayDuzenle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
+
+
+
+
+
+    @if (Model.Makine.Bolumler.ID == 5 ||Model.Makine.Bolumler.ID ==12 || Model.Makine.Bolumler.ID ==13)
+    {
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BasincKWh, "BASINÇ (KwH)", htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BasincKWh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BasincKWh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.M3, "m³", htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.M3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.M3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        @Html.LabelFor(model => model.CalismaSuresi, "ÇALIŞMA SÜRESİ", htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.CalismaSuresi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CalismaSuresi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="DEĞİŞİKLİKLERİ KAYDET" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+

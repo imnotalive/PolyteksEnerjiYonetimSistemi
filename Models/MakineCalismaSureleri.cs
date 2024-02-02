@@ -22,7 +22,10 @@ namespace PolyteksEnerjiYonetimSistemi.Models
         public string KayitEden { get; set; }
         public Nullable<System.DateTime> KayitTarihi { get; set; }
         public Nullable<decimal> ToplamTuketimKwh { get; set; }
+        public Nullable<decimal> BasincKWh { get; set; }
         public Nullable<int> BolumID { get; set; }
+        public Nullable<bool> KayitliMi { get; set; }
+        public Nullable<int> M3 { get; set; }
     
         public virtual Bolumler Bolumler { get; set; }
         public virtual Makine Makine { get; set; }

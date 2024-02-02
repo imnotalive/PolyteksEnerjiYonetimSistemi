@@ -17,16 +17,22 @@ namespace PolyteksEnerjiYonetimSistemi.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Bolumler()
         {
-            this.Makine = new HashSet<Makine>();
+            this.Hedefler = new HashSet<Hedefler>();
+            this.AylikUretimVerileri = new HashSet<AylikUretimVerileri>();
             this.MakineCalismaSureleri = new HashSet<MakineCalismaSureleri>();
+            this.Makine = new HashSet<Makine>();
         }
     
         public int ID { get; set; }
         public string Bolum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Makine> Makine { get; set; }
+        public virtual ICollection<Hedefler> Hedefler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AylikUretimVerileri> AylikUretimVerileri { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MakineCalismaSureleri> MakineCalismaSureleri { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Makine> Makine { get; set; }
     }
 }

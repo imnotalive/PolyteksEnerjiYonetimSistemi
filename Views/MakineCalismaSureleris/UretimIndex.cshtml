@@ -4,18 +4,42 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var mer = DateTime.Now.Month;
     var abc = mer - 1;
+    string asd = "KAPATILMIŞTIR";
 
 }
-
+<head>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+</head>
+<head>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+</head>
 <div class="container">
-    <h3><b>ÜRETİM BÖLÜMÜ</b></h3>
-    <h4><b>ÜRETİM MAKİNELERİ</b></h4>
-    <h5><b>YIL :@DateTime.Now.Year</b></h5>
-    <h5><b>AY :@DateTime.Now.Month</b></h5>
-    <h6><b> @abc. ay için giriş yapmaktasınız...</b></h6>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">
+                <b>
+
+                    ÜRETİM BÖLÜMÜ
+                </b>
+            </h3>
+
+            <h4><b>ÜRETİM MAKİNELERİ</b></h4>
+            <h5><b>YIL :@DateTime.Now.Year</b></h5>
+            <h5><b>AY :@DateTime.Now.Month</b></h5>
+            @if (abc == 0)
+            {
+                <h6><b> @DateTime.Now.AddYears(-1).Year ve @DateTime.Now.AddMonths(-1).Month. ay için giriş yapmaktasınız...</b></h6>
+
+
+            }
+            else
+            { <h6><b> @abc. ay için giriş yapmaktasınız...</b></h6>}
+        </div>
+    </div>
 </div>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+
 
 <div class="container-fluid">
     <div class="form-group">
@@ -29,7 +53,7 @@
 <hr />
 
 <table class="table table-bordered">
-    <tr style="background-color: #80471C">
+    <tr style="background-color: darkseagreen">
 
         <th>
             @Html.DisplayNameFor(model => model.MakineAdi)
@@ -44,7 +68,7 @@
 
     @foreach (var item in Model)
     {
-<tr style="background-color: cornflowerblue" class="Search">
+<tr style="background-color: lightskyblue" class="Search">
 
     <td>
         @Html.DisplayFor(modelItem => item.MakineAdi)
@@ -56,7 +80,7 @@
     <td>
         <table class="table table-bordered table-info">
             <thead>
-                <tr style="background-color: #80471C">
+                <tr style="background-color: darkseagreen">
                     <th>
                         YIL
                     </th>
@@ -78,27 +102,71 @@
                     <th>
                         TOPLAM TÜKETİM
                     </th>
+                    @if (User.IsInRole("U"))
+                    {
+                        <th></th>
+                    }
                 </tr>
             </thead>
             <tbody>
                 @foreach (var detay in item.MakineCalismaSureleri)
                 {
 
-                    var a = item.KWH * detay.CalismaSuresi;
-                    <tr class="Search">
-                        <td>@(detay.Yil)</td>
-                        <td> @(detay.Ay)</td>
+                  
+                    if (detay.Ay == ViewBag.ay)
+                    {
+                        <tr class="Search">
 
-                        <td>@(detay.CalismaSuresi)</td>
+                            <td>@(detay.Yil)</td>
+                            <td> @(detay.Ay)</td>
 
-                        <td> @(detay.KayitEden)</td>
+                            <td>@(detay.CalismaSuresi)</td>
 
-                        <td> @(detay.KayitTarihi)</td>
+                            <td> @(detay.KayitEden)</td>
 
-                        <td> @(a)</td>
+                            <td>        @Convert.ToDateTime(detay.KayitTarihi).ToString("dd.MM.yyyy")</td>
+
+                            <td> @(detay.ToplamTuketimKwh.Value.ToString("N2"))</td>
+
+                            @if (User.IsInRole("U"))
+                            {
+                                <td>
+                                    <center>
+                                        <a href="@Url.Action("DetayDuzenle", "MakineCalismaSureleris", new { id = detay.ID })" title="DÜZENLE" class="btn btn-sm btn-primary embed-responsive"> <i class="fa fa-pencil-square" aria-hidden="true">  </i></a>
+                                    </center>
+                                </td>
+                            }
+
+                        </tr>
+                    }
+                    if (abc == 0 && detay.Ay == DateTime.Now.AddMonths(-1).Month && detay.Yil == DateTime.Now.AddYears(-1).Year)
+                    {
+            <tr class="Search">
+                <td>@(detay.Yil)</td>
+                <td> @(detay.Ay)</td>
+                <td>@(detay.CalismaSuresi)</td>
+                <td> @(detay.KayitEden)</td>
+
+                <td> @Convert.ToDateTime(detay.KayitTarihi).ToString("dd.MM.yyyy")</td>
+
+              
 
 
-                    </tr>
+
+
+
+                <td> @(detay.ToplamTuketimKwh.Value.ToString("N2"))</td>
+
+                @if (User.IsInRole("U"))
+                {
+                    <td>
+                        <center>
+                            <a href="@Url.Action("DetayDuzenle", "MakineCalismaSureleris", new { id = detay.ID })" title="DÜZENLE" class="btn btn-sm btn-primary embed-responsive"> <i class="fa fa-pencil-square" aria-hidden="true">  </i></a>
+                        </center>
+                    </td>
+                }
+            </tr>
+                    }
                 }
 
             </tbody>
@@ -106,39 +174,62 @@
     </td>
     @if (User.IsInRole("U"))
     {
+        bool kapali = false;
+
         foreach (var detays in item.MakineCalismaSureleri)
         {
 
-
-            if (detays.MakineID != 0)
+            if (detays.Ay == ViewBag.ay && detays.Yil == ViewBag.yil && detays.MakineID > 0 && abc != 0)
             {
-
+                kapali = true;
                 <td>
-                    <b>KAPATILMIŞTIR</b>
+                    <b>@asd</b>
                 </td>
 
+                break;
+            }
+            else if (detays.Ay == DateTime.Now.AddMonths(-1).Month && detays.Yil == DateTime.Now.AddYears(-1).Year && detays.MakineID > 0 && abc == 0)
+            {
+                kapali = true;
+                <td>
+                    <b>@asd</b>
+                </td>
+
+                break;
             }
 
 
+            else if (detays.Ay != ViewBag.ay && detays.Yil == ViewBag.yil)
+            {
+
+            }
         }
 
-        if (item.MakineCalismaSureleri.Count == 0)
+
+        if (ViewBag.counter == 1 && kapali == false)
         {
+
             <td>
-                @Html.ActionLink("EKLE", "Edit", new { id1 = item.ID })
+                <a href="javascript:void(0);" class="anchorDetail btn btn-sm btn-info embed-responsive" id1="@item.ID" title="EKLE"><i class="fa fa-plus-circle">   </i></a>
 
             </td>
+
         }
 
 
 
-    }
 
+
+
+
+    }
     </tr>
     }
+    
 
 
 </table>
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
 <script>
     //LIVE SEARCH
     $(document).ready(function () {
@@ -158,4 +249,62 @@
             })
         });
     });
+</script>
+<div id="myModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <CENTER> <h4><b></b></h4></CENTER>
+
+                <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+
+
+            </div>
+            <div id="myModalContent"></div>
+            <div class="modal-footer">
+                <div style="float:right">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Kapat</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    var TeamDetailPostBackURL = '/MakineCalismaSureleris/Edit';
+    $(function () {
+        $(".anchorDetail").click(function () {
+            debugger;
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('id1');
+            var options = { "backdrop": "static", keyboard: true };
+            $.ajax({
+                type: "GET",
+                url: TeamDetailPostBackURL,
+                contentType: "application/json; charset=utf-8",
+                data: { "id1": id },
+                datatype: "json",
+                success: function (data) {
+                    debugger;
+                    $('#myModalContent').html(data);
+                    $('#myModal').modal(options);
+                    $('#myModal').modal('show');
+
+                },
+                error: function () {
+                    alert("HATA OLUŞTU.");
+                }
+            });
+        });
+        //$("#closebtn").on('click',function(){
+        //    $('#myModal').modal('hide');
+
+        //$("#closbtn").click(function () {
+        //    $('#myModal').modal('hide');
+        //});
+    });
+
 </script>

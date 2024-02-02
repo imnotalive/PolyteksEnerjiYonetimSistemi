@@ -25,6 +25,8 @@ namespace PolyteksEnerjiYonetimSistemi.Models
         public string MakineAdi { get; set; }
         public Nullable<int> Bolum { get; set; }
         public Nullable<decimal> KWH { get; set; }
+        public string YrdTesisMakTipi { get; set; }
+        public string BasincDegeri { get; set; }
     
         public virtual Bolumler Bolumler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

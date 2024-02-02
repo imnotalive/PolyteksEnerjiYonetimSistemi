@@ -13,10 +13,10 @@ namespace PolyteksEnerjiYonetimSistemi.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class POLY_ENERJIEntities : DbContext
+    public partial class POLY_ENERJI : DbContext
     {
-        public POLY_ENERJIEntities()
-            : base("name=POLY_ENERJIEntities")
+        public POLY_ENERJI()
+            : base("name=POLY_ENERJI")
         {
         }
     
@@ -26,8 +26,15 @@ namespace PolyteksEnerjiYonetimSistemi.Models
         }
     
         public virtual DbSet<Bolumler> Bolumler { get; set; }
+        public virtual DbSet<FaturaBilgileri> FaturaBilgileri { get; set; }
+        public virtual DbSet<FaturaYeri> FaturaYeri { get; set; }
         public virtual DbSet<Kullanicilar> Kullanicilar { get; set; }
-        public virtual DbSet<Makine> Makine { get; set; }
+        public virtual DbSet<Hedefler> Hedefler { get; set; }
+        public virtual DbSet<AylikUretimVerileri> AylikUretimVerileri { get; set; }
         public virtual DbSet<MakineCalismaSureleri> MakineCalismaSureleri { get; set; }
+        public virtual DbSet<Makine> Makine { get; set; }
+        public virtual DbSet<View_Bolum_Aylik_Calisma_Sureleris> View_Bolum_Aylik_Calisma_Sureleris { get; set; }
+        public virtual DbSet<View_Bolum_Aylik_Calisma_Sureleri_Detay> View_Bolum_Aylik_Calisma_Sureleri_Detay { get; set; }
+        public virtual DbSet<View_Bolum_Aylik_Calisma_Suresi_Basinc> View_Bolum_Aylik_Calisma_Suresi_Basinc { get; set; }
     }
 }

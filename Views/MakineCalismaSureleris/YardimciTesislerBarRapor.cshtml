@@ -1,0 +1,86 @@
+﻿@model IEnumerable<PolyteksEnerjiYonetimSistemi.Models.View_Bolum_Aylik_Calisma_Sureleri_Detay>
+
+@{
+    ViewBag.Title = "YardimciTesislerBarRapor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>YardimciTesislerBarRapor</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Yil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toplam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasincDegeri)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.BasincDegeri == "5")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Yil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Toplam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasincDegeri)
+                </td>
+
+            </tr>
+        }
+        if (item.BasincDegeri == "7")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Yil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Toplam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasincDegeri)
+                </td>
+
+            </tr>
+        }
+        if (item.BasincDegeri == "10")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Yil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Toplam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasincDegeri)
+                </td>
+
+            </tr>
+        }
+    }
+
+</table>

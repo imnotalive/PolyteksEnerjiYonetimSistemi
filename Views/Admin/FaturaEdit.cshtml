@@ -1,0 +1,59 @@
+﻿@model PolyteksEnerjiYonetimSistemi.Models.FaturaBilgileri
+
+@{
+    ViewBag.Title = "FaturaEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Fatura Bilgileri Düzenleme</h4>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.YIL, "YIL", htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.YIL, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.YIL, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AY, "AY", htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AY, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AY, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Miktar, "MİKTAR", htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Miktar, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Miktar, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FaturaYeriID, "FATURA YERİ", htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-10">
+            @Html.DropDownList("FaturaYeriID", null, "--SEÇİNİZ--", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FaturaYeriID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-12">
+            <input type="submit" value="FATURA DÜZENLE" class="btn btn-success" />
+        </div>
+    </div>
+   
+   
+ </div>
+}

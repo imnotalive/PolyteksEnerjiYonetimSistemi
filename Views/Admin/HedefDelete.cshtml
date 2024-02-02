@@ -1,0 +1,58 @@
+﻿@model PolyteksEnerjiYonetimSistemi.Models.Hedefler
+
+@{
+    ViewBag.Title = "HedefDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4><b>SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</b></h4>
+<div class="container">
+
+    <table class="table table-bordered">
+        <tr>
+            <dt>
+                @Html.DisplayNameFor(model => model.Yil)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Yil)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ay)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ay)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HedefDeger)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HedefDeger)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Bolumler.Bolum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Bolumler.Bolum)
+            </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="SİL" class="btn btn-danger" /> |
+                    @Html.ActionLink("GERİ GİT", "HedefIndex","Admin",new {@class="btn btn-primary" })
+                </div>
+            }
+            </tr>
+        </table>
+</div>

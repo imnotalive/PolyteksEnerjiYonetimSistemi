@@ -1,0 +1,33 @@
+﻿@model PolyteksEnerjiYonetimSistemi.Models.FaturaYeri
+
+@{
+    ViewBag.Title = "FaturaYeriDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3>SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</h3>
+<div class="container">
+   
+    <table class="table table-bordered">
+        <tr>
+            <dt>
+                @Html.DisplayName("FATURA YERİ")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FaturaYeri1)
+            </dd>
+
+            </dl></tr></table>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="SİL" class="btn btn-danger" /> |
+                    @Html.ActionLink("GERİ GİT", "FaturaYeriIndex","Admin",new {@class="btn btn-info" })
+                </div>
+            }
+</div>
